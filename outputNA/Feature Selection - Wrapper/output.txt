@@ -1,0 +1,23 @@
+ARMA:
+	(9, 0, 9)
+	mse:  41,590158116511944 , mae: 2,986933900593429
+ELM:
+	['lag_17' 'lag_20' 'lag_23' 'lag_24' 'lag_25']
+	Hidden Neurons: 27
+	mse:  0,5858867008351566 , mae: 0,5819650277319596
+	P-value _ELM:  1,7343976283205784e-06
+ARMA+ELM
+	['lag_3' 'lag_13' 'lag_22' 'lag_23' 'lag_24']
+	Hidden Neurons : 29
+	mse:  0,34276002707371134 , mae: 0,2988437395197462
+	P-value _armaELM:  1,7343976283205784e-06
+MLP:
+	['lag_9' 'lag_12' 'lag_14' 'lag_15' 'lag_27']
+	Hidden Neurons: 27
+	mse:  7,010844003441882 , mae: 1,9121707826690038
+	P-value _MLP:  1,7343976283205784e-06
+ARMA+MLP
+	['lag_8' 'lag_13' 'lag_24' 'lag_25' 'lag_27']
+	Hidden Neurons : 45
+	mse:  3,337089651969388 , mae: 1,325424451692532
+	P-value _armaMLP:  1,7343976283205784e-06
