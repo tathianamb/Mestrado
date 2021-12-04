@@ -1,27 +1,28 @@
 from Processing.Evaluation import metricError
-from estimators.baseELM import elmPredict
+from estimators.baseESN import esnPredict
 from Processing.Process import getIDXMinMSE, prepareDataToANN
 from pandas import Series, DataFrame, MultiIndex
 
 
-def ElmPredict(serie):
+def EsnPredict(serie):
 
-    X_train, y_train, X_val, y_val, X_test, y_test, scalerTest = prepareDataToANN(serie, estimator='ELM')
+    X_train, y_train, X_val, y_val, X_test, y_test, scalerTest = prepareDataToANN(serie, estimator='ESN')
 
     idx: MultiIndex = MultiIndex.from_product([[i for i in range(5, 30, 2)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
 
-    #--------------- VALIDATION ---------------
+    # ----------------- VALIDATION -----------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
     validationErrorAverageDF = DataFrame(index=[i for i in range(5, 30, 2)], columns=['mse', 'mae'])
 
     for n_hidden in range(5, 30, 2):
 
-        for test in range(0,30):
-            predicted = elmPredict(hidden_dim=n_hidden,
-                                     x_train=X_train,
-                                     y_train=y_train, x_test=X_val,
-                                     y_test=y_val)
+        for test in range(0, 30):
+            predicted = esnPredict(n_reservoir=n_hidden,
+                                   x_train=X_train,
+                                   y_train=y_train,
+                                   x_test=X_val,
+                                   y_test=y_val)
 
             validationErrorMSE, validationErrorMAE, _ = metricError(predicted, actualValues=y_val)
 
@@ -33,16 +34,17 @@ def ElmPredict(serie):
 
     n_hidden = (getIDXMinMSE(validationErrorAverageDF))
 
-    # --------------- TEST ---------------
+    # ----------------- TEST -----------------
 
     testDF: DataFrame = DataFrame(index = y_test.index, columns=[i for i in range(0, 30)])
 
     for test in range(0, 30):
-        predicted = elmPredict(hidden_dim=n_hidden,
+        predicted = esnPredict(n_reservoir=n_hidden,
                                x_train=X_train,
                                y_train=y_train,
                                x_test=X_test,
                                y_test=y_test)
+
         testDF[test] = predicted
         testDF[test] = (((testDF[test] + 1) / 2) * (max(scalerTest) - min(scalerTest))) + min(scalerTest)
 

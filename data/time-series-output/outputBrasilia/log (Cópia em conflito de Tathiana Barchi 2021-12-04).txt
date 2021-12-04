@@ -1,0 +1,3 @@
+Dropped N/A rows:  -270
+Dropped N/A rows:  -270
+Dropped N/A rows:  -270

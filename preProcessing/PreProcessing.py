@@ -43,9 +43,9 @@ def preProcessSeries(serie: Series):
 
 def _usingESN(X, y, n_reservoir: int = 20) -> float:
     trainingRows: int = int(0.7 * len(X))
-    y_predicted_test = esnPredict(n_input=len(X.columns), n_reservoir=n_reservoir,
-                                      x_training=X[:trainingRows], y_training=y[:trainingRows],
-                                      x_test=X[trainingRows:], y_test=y[trainingRows:])
+    y_predicted_test = esnPredict(n_reservoir=n_reservoir,
+                                  x_train=X[:trainingRows], y_train=y[:trainingRows],
+                                  x_test=X[trainingRows:], y_test=y[trainingRows:])
     mse, mae, error = metricError(actualValues=y[trainingRows:], predictedValues=y_predicted_test)
 
     return mse
@@ -68,7 +68,7 @@ def _usingMLP(X, y) -> float:
     mse, mae, error = metricError(actualValues=y[trainingRows:], predictedValues=y_predicted_test)
     return mse
 
-def cross_val_score(estimator, X, y) -> list:
+def score(estimator, X, y) -> list:
     MSE: list = []
     if estimator == 'ESN':
         MSE.append(_usingESN(X, y))

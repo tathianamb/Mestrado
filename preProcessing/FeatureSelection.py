@@ -2,17 +2,15 @@ from typing import Union
 import numpy as np
 from numpy import ndarray
 from pandas import Series, DataFrame
-from preProcessing.PreProcessing import cross_val_score
+from preProcessing.PreProcessing import score
 
 def featureSelectionWrapper(X: DataFrame, y: DataFrame, estimator: str):
 
-    n_iterations: int = 5
+    n_iterations: int = 8
     current_mask: ndarray = np.zeros(shape=len(X.columns), dtype=bool)
-    cross_val_percentage: float = 0.5
 
     for _ in range(n_iterations):
-        new_feature_idx = _get_best_new_feature(estimator, X[: int(cross_val_percentage * X.shape[0])],
-                                                y[: int(cross_val_percentage * X.shape[0])], current_mask)
+        new_feature_idx = _get_best_new_feature(estimator, X, y, current_mask)
         current_mask[new_feature_idx] = True
 
     # filter like [True, False, False]
@@ -40,6 +38,6 @@ def _get_best_new_feature(estimator, X, y, current_mask):
         candidate_mask = current_mask.copy()
         candidate_mask[feature_idx] = True
         X_new = X.iloc[:, candidate_mask]
-        scores[feature_idx] = np.mean(cross_val_score(
+        scores[feature_idx] = np.mean(score(
             estimator, X_new, y))
     return min(scores, key=lambda feature_idx: scores[feature_idx])

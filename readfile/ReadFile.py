@@ -24,5 +24,8 @@ def fileToSerie(name: str):
 
     dataframe['date'] = dataframe['day'] + '/' + dataframe['year'].astype(str) + '-' + dataframe['min']
     dataframe['date'] = dateTime(dataframe['date'], format='%d/%m/%Y-%H:%M')
-
-    return Series(data=list(dataframe['ws_10m'].astype(float)), index=list(dataframe['date']), name='Actual').asfreq('H')
+    count_rows_bef = len(dataframe.index)
+    dataframe = dataframe.drop(dataframe.loc[dataframe['ws_10m'] == 'N/A'].index)
+    count_rows_aft = len(dataframe.index)
+    print('Dropped N/A rows: ', int(count_rows_aft-count_rows_bef))
+    return Series(data=list(dataframe['ws_10m'].astype(float)), index=list(dataframe['date']), name='Actual').asfreq('min')

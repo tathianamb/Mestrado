@@ -42,7 +42,7 @@ def elmPredict(hidden_dim, x_train, y_train, x_test, y_test):
 
     elm = ELM(x_train.shape[1], hidden_dim, 1)
 
-    elm.fit(x_train,y_train.values.reshape(-1,1))
+    elm.fit(x_train, y_train.values.reshape(-1,1))
 
     y_predicted_test = elm(x_test)
 

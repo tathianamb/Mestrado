@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a402cda3-8526-4b71-b502-4a4eca121ded" name="Default Changelist" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/.idea/rGraphicsSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/Brasilia.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/CampoGrande.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/Florianopolis.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/Natal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/Petrolina.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/SaoMartinhoDaSerra.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-input/SãoLuiz.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputBrasilia/log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputNatal/Feature Selection - Spearman/boxplot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputNatal/Feature Selection - Spearman/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputNatal/Feature Selection - Spearman/saidaFinal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputPetrolina/Feature Selection - Spearman/boxplot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputPetrolina/Feature Selection - Spearman/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputPetrolina/Feature Selection - Spearman/saidaFinal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputSãoLuiz/Feature Selection - Spearman/boxplot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputSãoLuiz/Feature Selection - Spearman/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/time-series-output/outputSãoLuiz/Feature Selection - Spearman/saidaFinal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/estimators/ARMA_ESN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/estimators/ARMA_RBF.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/estimators/ESN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/estimators/RBF.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/estimators/baseRBF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LACCI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LACCI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processing/Process.py" beforeDir="false" afterPath="$PROJECT_DIR$/Processing/Process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/Brasilia-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/CampoGrande-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/ED_header_new.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/Florianopolis-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/BENTO GONCALVES.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/BRASILIA.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/FLORESTA.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/GUANAMBI.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/JAGUARUANA.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/MACEIO.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/NATAL.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/PETROLINA.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/REMANSO.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/SAO JOAO DO PIAUI.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/SAO LUIS.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/SAO VICENTE DO SUL.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/INMET-2020/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/Natal-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/Petrolina-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/SaoMartinhoDaSerra-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/time-series-input/SãoLuiz-Jan-Fev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/estimators/ARMA.py" beforeDir="false" afterPath="$PROJECT_DIR$/estimators/ARMA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estimators/ELM.py" beforeDir="false" afterPath="$PROJECT_DIR$/estimators/ELM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estimators/HYBRID+ENSEMBLE.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/estimators/baseELM.py" beforeDir="false" afterPath="$PROJECT_DIR$/estimators/baseELM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estimators/baseESN.py" beforeDir="false" afterPath="$PROJECT_DIR$/estimators/baseESN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainNatal.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainNatal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainPetrolina.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainSaoLuis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Spearman/boxplotNatal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Spearman/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Spearman/saidaFinalNatal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/arma+elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/arma+mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/arma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/boxplotNatal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/saidaFinalNatal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputNA/Feature Selection - Wrapper/saidaFinalNatal.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Spearman/boxplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Spearman/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Spearman/saidaFinal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/arma+elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/arma+mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/arma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/boxplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/saidaFinal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/Feature Selection - Wrapper/saidaFinal.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/boxplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputPE/saidaFinal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Spearman/boxplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Spearman/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Spearman/saidaFinal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/arma+elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/arma+mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/arma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/boxplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/elm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/mlp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/saidaFinal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputSL/Feature Selection - Wrapper/saidaFinal.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preProcessing/FeatureSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/preProcessing/FeatureSelection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preProcessing/PreProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/preProcessing/PreProcessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readfile/ReadFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/readfile/ReadFile.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pAQ1UdiEEPkVhtZ4rYjchnLATx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FS-HMLC" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings>
+        <option name="useSoftWraps" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\outputSL" />
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes" />
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\main" />
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\Processing" />
+      <recent name="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\preProcessing" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="LACCI" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ReadFile" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/readfile" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/readfile/ReadFile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainNatal (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainNatal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainPetrolina (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainPetrolina.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainPetrolina" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Licon\Dropbox\Utfpr\Mestrado\Qualificação\Codes\mainPetrolina.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainSaoLuis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LACCI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainSaoLuis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.LACCI" />
+      <item itemvalue="Python.mainNatal (1)" />
+      <item itemvalue="Python.mainPetrolina (1)" />
+      <item itemvalue="Python.mainSaoLuis" />
+      <item itemvalue="Python.main (1)" />
+      <item itemvalue="Python.ReadFile" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.ReadFile" />
+        <item itemvalue="Python.mainNatal (1)" />
+        <item itemvalue="Python.mainSaoLuis" />
+        <item itemvalue="Python.mainPetrolina (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a402cda3-8526-4b71-b502-4a4eca121ded" name="Default Changelist" comment="" />
+      <created>1614623199235</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614623199235</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1629986240798</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629986240798</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638637368094">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637368094" />
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1638631206072">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638631206072" />
+    <state x="646" y="319" width="789" height="673" key="#xdebugger.evaluate" timestamp="1638638179316">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2744" y="207" width="793" height="590" key="#xdebugger.evaluate/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715447186" />
+    <state x="646" y="319" width="789" height="673" key="#xdebugger.evaluate/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638638179316" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1638559945423">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="274" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638559945423" />
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom" timestamp="1638637816457">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637816457" />
+    <state width="1877" height="323" key="GridCell.Tab.0.center" timestamp="1638637816457">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637816457" />
+    <state width="1877" height="323" key="GridCell.Tab.0.left" timestamp="1638637816457">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637816457" />
+    <state width="1877" height="323" key="GridCell.Tab.0.right" timestamp="1638637816457">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637816457" />
+    <state width="1877" height="323" key="GridCell.Tab.1.bottom" timestamp="1638637822866">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637822866" />
+    <state width="1877" height="323" key="GridCell.Tab.1.center" timestamp="1638637822866">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637822866" />
+    <state width="1877" height="323" key="GridCell.Tab.1.left" timestamp="1638637822866">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637822866" />
+    <state width="1877" height="323" key="GridCell.Tab.1.right" timestamp="1638637822866">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="323" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715588933" />
+    <state width="1877" height="323" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637822866" />
+    <state x="2529" y="238" key="SettingsEditor" timestamp="1638637121055">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2529" y="238" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1638637121055" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1637629089963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637629089963" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1629994413682" />
+    <state x="1988" y="69" width="1488" height="760" maximized="true" key="dock-window-1" timestamp="1637715317794">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1988" y="69" width="1488" height="760" maximized="true" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637715317794" />
+    <state x="1920" y="0" width="1492" height="1028" key="dock-window-2" timestamp="1637627869632">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1492" height="1028" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637627869632" />
+    <state x="1920" y="0" width="1492" height="736" maximized="true" key="dock-window-3" timestamp="1637628262244">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1492" height="736" maximized="true" key="dock-window-3/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637628262244" />
+    <state x="1920" y="0" width="1492" height="736" maximized="true" key="dock-window-4" timestamp="1637629642150">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1492" height="736" maximized="true" key="dock-window-4/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637629642150" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1637629443407">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1637629443407" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/estimators/ARMA_MLP.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/estimators/ARMA_MLP.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/estimators/ARMA.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/estimators/ARMA_ESN.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/estimators/baseESN.py</url>
+          <line>256</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/preProcessing/PreProcessing.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/readfile/ReadFile.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
