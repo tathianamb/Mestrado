@@ -1,5 +1,6 @@
 from warnings import filterwarnings
 
+from datetime import datetime
 import matplotlib.pyplot as plt
 from pandas import DataFrame
 
@@ -29,9 +30,11 @@ import sys
 #       MAIN       #
 ####################
 
-base = "Brasilia"
+base = "CampoGrande"
 
 sys.stdout = open("IA/data/time-series-output/output" + base + "/log.txt", "a", encoding="utf-8")
+
+print("Started: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
 serie = fileToSerie(base + ".csv")
 
@@ -189,6 +192,8 @@ outputFinal["ACTUAL"] = serie[-len(output_armaELM):]
 outputFinal.to_csv("IA/data/time-series-output/output" + base + "/saida_teste_mse.csv", header=True, index=True)
 allMSE.boxplot()
 plt.savefig("IA/data/time-series-output/output" + base + "/boxplot.png", format="png")
+
+print("Ended: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
 '''
     Seu namorado gostaria de lembrá-la
