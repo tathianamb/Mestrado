@@ -31,7 +31,7 @@ import sys
 
 base = "Brasilia"
 
-sys.stdout = open("data\\time-series-output\\output" + base + "\\log.txt", "a", encoding="utf-8")
+sys.stdout = open("IA/data/time-series-output/output" + base + "/log.txt", "a", encoding="utf-8")
 
 serie = fileToSerie(base + ".csv")
 
@@ -186,9 +186,9 @@ outputFinal["ARMA+ESN"] = output_armaESN
 outputFinal["RBF"] = output_RBF
 outputFinal["ARMA+RBF"] = output_armaRBF
 outputFinal["ACTUAL"] = serie[-len(output_armaELM):]
-outputFinal.to_csv("data\\time-series-output\\output" + base + "\\saida_teste_mse.csv", header=True, index=True)
+outputFinal.to_csv("IA/data/time-series-output/output" + base + "/saida_teste_mse.csv", header=True, index=True)
 allMSE.boxplot()
-plt.savefig("data\\time-series-output\\output" + base + "\\boxplot.png", format="png")
+plt.savefig("IA/data/time-series-output/output" + base + "/boxplot.png", format="png")
 
 '''
     Seu namorado gostaria de lembrá-la
