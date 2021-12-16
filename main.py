@@ -26,174 +26,192 @@ autograph.set_verbosity(0)
 
 import sys
 
+base = "Petrolina"
+base_dir = "./data/time-series-output/output" + base
+
+sys.stdout = open(base_dir + "/log.txt", "a", encoding="utf-8")
+
+
+def baseData():
+    serie = fileToSerie(base + ".csv")
+    serie, scalerSTDTest, scalerMeanTest = preProcessSeries(serie.copy())
+    serie = serie[:-1]
+    return serie, scalerSTDTest, scalerMeanTest
+
+
+def ARMA(serie, scalerSTDTest, scalerMeanTest):
+    print("ARMA:")
+    mse, mae, testDF_arma, order = armaPredict(serie)
+    print("\tmse: ", mse, ", mae:", mae)
+    output_arma = posProcessing(testDF_arma, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    return output_arma, order
+
+
+def ELM(serie, scalerSTDTest, scalerMeanTest):
+    print("ELM:")
+    n_hidden_ELM, validationErrorAverageDF_ELM, testDF_ELM = ElmPredict(serie)
+    print("\tHidden Neurons: " + str(n_hidden_ELM))
+    output_elm = posProcessing(testDF_ELM, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, ELMPredict, mseTests = wilcoxonTest(outputs=output_elm, actual=serie)
+    # allMSE["ELM"] = mseTests
+    print("\tP-value _ELM: ", p)
+    return output_elm, mseTests
+
+
+def ARMAandELM(serie, scalerSTDTest, scalerMeanTest, order):
+    print("ARMA+ELM")
+    n_hidden_armaELM, validationErrorAverageDF_armaELM, testDF_armaELM = armaElmPredict(serie, order)
+    print("\tHidden Neurons: " + str(n_hidden_armaELM))
+    output_armaELM = posProcessing(testDF_armaELM, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=output_armaELM, actual=serie)
+    # allMSE["ARMA+ELM"] = mseTests
+    print("\tP-value _armaELM: ", p)
+    return output_armaELM, mseTests
+
+
+def MLP(serie, scalerSTDTest, scalerMeanTest):
+    print("MLP:")
+    n_hidden_MLP, validationErrorAverageDF_MLP, testDF_MLP = MlpPredict(serie)
+    print("\tHidden Neurons: " + str(n_hidden_MLP))
+    output_MLP = posProcessing(testDF_MLP, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, MLPPredict, mseTests = wilcoxonTest(outputs=output_MLP, actual=serie)
+    # allMSE["MLP"] = mseTests
+    print("\tP-value _MLP: ", p)
+    return output_MLP, mseTests
+
+
+def ARMAandMLP(serie, scalerSTDTest, scalerMeanTest, order):
+    print("ARMA+MLP")
+    n_hidden_armaMLP, validationErrorAverageDF_armaMLP, testDF_armaMLP = armaMlpPredict(serie, order)
+    print("\tHidden Neurons: " + str(n_hidden_armaMLP))
+    output_armaMLP = posProcessing(testDF_armaMLP, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=output_armaMLP, actual=serie)
+    # allMSE["ARMA+MLP"] = mseTests
+    print("\tP-value _armaMLP: ", p)
+    return output_armaMLP, mseTests, hybridSystemPredict
+
+
+def ESN(serie, scalerSTDTest, scalerMeanTest):
+    print("ESN:")
+    n_hidden_ESN, validationErrorAverageDF_ESN, testDF_ESN = EsnPredict(serie)
+    print("\tHidden Neurons: " + str(n_hidden_ESN))
+    output_ESN = posProcessing(testDF_ESN, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, EsnPredicted, mseTests = wilcoxonTest(outputs=output_ESN, actual=serie)
+    # allMSE["ESN"] = mseTests
+    print("\tP-value _ESN: ", p)
+    return output_ESN, mseTests
+
+
+def ARMAandESN(serie, scalerSTDTest, scalerMeanTest, order):
+    print("ARMA+ESN")
+    n_hidden_armaESN, validationErrorAverageDF_armaESN, testDF_armaESN = armaEsnPredict(serie, order)
+    print("\tHidden Neurons: " + str(n_hidden_armaESN))
+    output_armaESN = posProcessing(testDF_armaESN, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, armaEsnPredicted, mseTests = wilcoxonTest(outputs=output_armaESN, actual=serie)
+    # allMSE["ARMA+ESN"] = mseTests
+    print("\tP-value _armaESN: ", p)
+    return output_armaESN, mseTests
+
+
+def RBF(serie, scalerSTDTest, scalerMeanTest):
+    print("RBF:")
+    n_hidden_RBF, validationErrorAverageDF_RBF, testDF_RBF = RbfPredict(serie)
+    print("\tHidden Neurons: " + str(n_hidden_RBF))
+    output_RBF = posProcessing(testDF_RBF, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, RbfPredicted, mseTests = wilcoxonTest(outputs=output_RBF, actual=serie)
+    # allMSE["RBF"] = mseTests
+    print("\tP-value _RBF: ", p)
+    return output_RBF, mseTests
+
+
+def ARMAandRBF(serie, scalerSTDTest, scalerMeanTest, order):
+    print("ARMA+RBF")
+    n_hidden_armaRBF, validationErrorAverageDF_armaRBF, testDF_armaRBF = armaRbfPredict(serie, order)
+    print("\tHidden Neurons: " + str(n_hidden_armaRBF))
+    output_armaRBF = posProcessing(testDF_armaRBF, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    w, p, armaRbfPredicted, mseTests = wilcoxonTest(outputs=output_armaRBF, actual=serie)
+    # allMSE["ARMA+RBF"] = mseTests
+    print("\tP-value _armaRBF: ", p)
+    return output_armaRBF, mseTests
+
+
 ####################
 #       MAIN       #
 ####################
+def main():
+    print("Started: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
-base = "CampoGrande"
+    serie, scalerSTDTest, scalerMeanTest = baseData()
 
-sys.stdout = open("IA/data/time-series-output/output" + base + "/log.txt", "a", encoding="utf-8")
+    allMSE = DataFrame(index=[i for i in range(0, 30)], columns=["ELM", "ARMA+ELM", "MLP", "ARMA+MLP"])
 
-print("Started: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    # ------------------------ ARMA ------------------------
 
-serie = fileToSerie(base + ".csv")
+    output_arma, order = ARMA(serie, scalerSTDTest, scalerMeanTest)
 
-serie, scalerSTDTest, scalerMeanTest = preProcessSeries(serie.copy())
+    # ------------------------ ELM ------------------------
 
-serie = serie[:-1]
+    output_elm, mseTests = ELM(serie, scalerSTDTest, scalerMeanTest)
+    allMSE["ELM"] = mseTests
 
-allMSE = DataFrame(index=[i for i in range(0, 30)], columns=["ELM", "ARMA+ELM", "MLP", "ARMA+MLP"])
+    # ------------------------ ARMA ELM ------------------------
 
-# ------------------------ ARMA ------------------------
+    output_armaELM, mseTests = ARMAandELM(serie, scalerSTDTest, scalerMeanTest, order)
+    allMSE["ARMA+ELM"] = mseTests
 
-print("ARMA:")
-mse, mae, testDF_arma, order = armaPredict(serie)
-print("\tmse: ", mse, ", mae:", mae)
-output_arma = posProcessing(testDF_arma, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    # ------------------------ MLP ------------------------
 
-# ------------------------ ELM ------------------------
-print("ELM:")
-n_hidden_ELM, validationErrorAverageDF_ELM, testDF_ELM = ElmPredict(serie)
+    output_MLP, mseTests = MLP(serie, scalerSTDTest, scalerMeanTest)
+    allMSE["MLP"] = mseTests
 
-print("\tHidden Neurons: " + str(n_hidden_ELM))
+    # ------------------------ ARMA MLP ------------------------
 
-output_elm = posProcessing(testDF_ELM, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    output_armaMLP, mseTests, hybridSystemPredict = ARMAandMLP(serie, scalerSTDTest, scalerMeanTest, order)
+    allMSE["ARMA+MLP"] = mseTests
 
-w, p, ELMPredict, mseTests = wilcoxonTest(outputs=output_elm, actual=serie)
+    # ------------------------------------------------
 
-allMSE["ELM"] = mseTests
+    output_ESN, mseTests = ESN(serie, scalerSTDTest, scalerMeanTest)
+    allMSE["ESN"] = mseTests
 
-print("\tP-value _ELM: ", p)
+    # ------------------------------------------------
 
-# ------------------------ ARMA ELM ------------------------
+    output_armaESN, mseTests = ARMAandESN(serie, scalerSTDTest, scalerMeanTest, order)
+    allMSE["ARMA+ESN"] = mseTests
 
-print("ARMA+ELM")
-n_hidden_armaELM, validationErrorAverageDF_armaELM, testDF_armaELM = armaElmPredict(serie, order)
+    # ------------------------------------------------
 
-print("\tHidden Neurons : " + str(n_hidden_armaELM))
+    output_RBF, mseTests = RBF(serie, scalerSTDTest, scalerMeanTest)
+    allMSE["RBF"] = mseTests
 
-output_armaELM = posProcessing(testDF_armaELM, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
+    # ------------------------------------------------
 
-w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=output_armaELM, actual=serie)
+    output_armaRBF, mseTests = ARMAandRBF(serie, scalerSTDTest, scalerMeanTest, order)
+    allMSE["ARMA+RBF"] = mseTests
 
-allMSE["ARMA+ELM"] = mseTests
+    # ------------------------------------------------
 
-print("\tP-value _armaELM: ", p)
+    outputFinal = DataFrame(index=hybridSystemPredict.index,
+                            columns=["ARMA", "ELM", "ARMA+ELM", "MLP", "ARMA+MLP", "ESN", "ARMA+ESN", "RBF", "ARMA+RBF",
+                                     "ACTUAL"])
+    outputFinal["ARMA"] = output_arma
+    outputFinal["ELM"] = output_elm
+    outputFinal["ARMA+ELM"] = output_armaELM
+    outputFinal["MLP"] = output_MLP
+    outputFinal["ARMA+MLP"] = output_armaMLP
+    outputFinal["ESN"] = output_ESN
+    outputFinal["ARMA+ESN"] = output_armaESN
+    outputFinal["RBF"] = output_RBF
+    outputFinal["ARMA+RBF"] = output_armaRBF
+    outputFinal["ACTUAL"] = serie[-len(output_armaELM):]
+    outputFinal.to_csv(base_dir + "/saida_teste_mse.csv", header=True, index=True)
+    allMSE.to_csv(base_dir + "/all_mse.csv", header=True, index=True)
+    plt.savefig(base_dir + "/boxplot.png", format="png")
 
-# ------------------------ MLP ------------------------
-print("MLP:")
+    print("Ended: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
-n_hidden_MLP, validationErrorAverageDF_MLP, testDF_MLP = MlpPredict(serie)
 
-print("\tHidden Neurons: " + str(n_hidden_MLP))
-
-output_MLP = posProcessing(testDF_MLP, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, MLPPredict, mseTests = wilcoxonTest(outputs=output_MLP, actual=serie)
-
-allMSE["MLP"] = mseTests
-
-print("\tP-value _MLP: ", p)
-
-# ------------------------ ARMA MLP ------------------------
-print("ARMA+MLP")
-
-n_hidden_armaMLP, validationErrorAverageDF_armaMLP, testDF_armaMLP = armaMlpPredict(serie, order)
-
-print("\tHidden Neurons : " + str(n_hidden_armaMLP))
-
-output_armaMLP = posProcessing(testDF_armaMLP, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=output_armaMLP, actual=serie)
-
-allMSE["ARMA+MLP"] = mseTests
-
-print("\tP-value _armaMLP: ", p)
-
-# ------------------------------------------------
-
-print("ESN:")
-
-n_hidden_ESN, validationErrorAverageDF_ESN, testDF_ESN = EsnPredict(serie)
-
-print("\tHidden Neurons: " + str(n_hidden_ESN))
-
-output_ESN = posProcessing(testDF_ESN, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, EsnPredicted, mseTests = wilcoxonTest(outputs=output_ESN, actual=serie)
-
-allMSE["ESN"] = mseTests
-
-print("\tP-value _ESN: ", p)
-
-# ------------------------------------------------
-
-
-print("ARMA+ESN")
-
-n_hidden_armaESN, validationErrorAverageDF_armaESN, testDF_armaESN = armaEsnPredict(serie, order)
-
-print("\tHidden Neurons : " + str(n_hidden_armaESN))
-
-output_armaESN = posProcessing(testDF_armaESN, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, armaEsnPredicted, mseTests = wilcoxonTest(outputs=output_armaESN, actual=serie)
-
-allMSE["ARMA+ESN"] = mseTests
-
-print("\tP-value _armaESN: ", p)
-
-# ------------------------------------------------
-
-print("RBF:")
-
-n_hidden_RBF, validationErrorAverageDF_RBF, testDF_RBF = RbfPredict(serie)
-
-print("\tHidden Neurons: " + str(n_hidden_RBF))
-
-output_RBF = posProcessing(testDF_RBF, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, RbfPredicted, mseTests = wilcoxonTest(outputs=output_RBF, actual=serie)
-
-allMSE["RBF"] = mseTests
-
-print("\tP-value _RBF: ", p)
-
-# ------------------------------------------------
-
-
-print("ARMA+RBF")
-
-n_hidden_armaRBF, validationErrorAverageDF_armaRBF, testDF_armaRBF = armaRbfPredict(serie, order)
-
-print("\tHidden Neurons : " + str(n_hidden_armaRBF))
-
-output_armaRBF = posProcessing(testDF_armaRBF, monthlySTD=scalerSTDTest, monthlyMean=scalerMeanTest)
-
-w, p, armaRbfPredicted, mseTests = wilcoxonTest(outputs=output_armaRBF, actual=serie)
-
-allMSE["ARMA+RBF"] = mseTests
-
-print("\tP-value _armaRBF: ", p)
-
-outputFinal = DataFrame(index=hybridSystemPredict.index,
-                        columns=["ARMA", "ELM", "ARMA+ELM", "MLP", "ARMA+MLP", "ESN", "ARMA+ESN", "RBF", "ARMA+RBF",
-                                 "ACTUAL"])
-outputFinal["ARMA"] = output_arma
-outputFinal["ELM"] = output_elm
-outputFinal["ARMA+ELM"] = output_armaELM
-outputFinal["MLP"] = output_MLP
-outputFinal["ARMA+MLP"] = output_armaMLP
-outputFinal["ESN"] = output_ESN
-outputFinal["ARMA+ESN"] = output_armaESN
-outputFinal["RBF"] = output_RBF
-outputFinal["ARMA+RBF"] = output_armaRBF
-outputFinal["ACTUAL"] = serie[-len(output_armaELM):]
-outputFinal.to_csv("IA/data/time-series-output/output" + base + "/saida_teste_mse.csv", header=True, index=True)
-allMSE.boxplot()
-plt.savefig("IA/data/time-series-output/output" + base + "/boxplot.png", format="png")
-
-print("Ended: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+main()
 
 '''
     Seu namorado gostaria de lembrá-la
