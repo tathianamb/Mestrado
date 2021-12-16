@@ -4,13 +4,13 @@ from Processing.Evaluation import metricError
 from sklearn.model_selection import train_test_split
 from numpy import concatenate
 
-def armaPredict(serie: Series, isAR=False, isHybrid=False, order=None):
+def armaPredict(serie: Series, isHybrid=False, order=None):
 
     trainS, testS = train_test_split(serie, test_size=0.2, shuffle=False)
     forecastsTest, predictedTest = [], []
 
     if isHybrid:
-        model = ARIMA(trainS, order=order).fit()
+        model = ARIMA(trainS, order=order).fit(method='innovations_mle')
         # predict train series
         predictedTrain = model.predict(n_periods=len(trainS))
 
@@ -31,22 +31,15 @@ def armaPredict(serie: Series, isAR=False, isHybrid=False, order=None):
     forecastsTest = []
     aic = float('inf')
 
-    if isAR:
-        for p_ in range(1, 10):
-            model = ARIMA(trainS, order=(p_, 0, 0)).fit()
+    for p_ in range(1, 10):
+        for q_ in range(1, 10):
+            model = ARIMA(trainS, order=(p_, 0, q_)).fit(method='innovations_mle')
             aic_ = model.aic
             if aic_ < aic:
                 p = p_
-    else:
-        for p_ in range(1, 10):
-            for q_ in range(1, 10):
-                model = ARIMA(trainS, order=(p_, 0, q_)).fit()
-                aic_ = model.aic
-                if aic_ < aic:
-                    p = p_
-                    q = q_
+                q = q_
 
-    model = ARIMA(trainS, order=(p, 0, q)).fit()
+    model = ARIMA(trainS, order=(p, 0, q)).fit(method='innovations_mle')
     order=(p, 0, q)
     print('\t' + str((order)))
 
