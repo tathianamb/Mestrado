@@ -1,0 +1,45 @@
+Started:  07/12/2021 09:59:26
+ARMA:
+	(9, 0, 9)
+	mse:  4.460641591563195 , mae: 0.7833410888039809
+ELM:
+	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
+	Hidden Neurons: 17
+	mse:  4.509666217458225 , mae: 0.7999540419657959
+	P-value _ELM:  1.7343976283205784e-06
+ARMA+ELM
+	['lag_1', 'lag_3', 'lag_9', 'lag_5', 'lag_12']
+	Hidden Neurons : 17
+	mse:  16.77676211099612 , mae: 3.577165809477674
+	P-value _armaELM:  1.7343976283205784e-06
+MLP:
+	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
+	Hidden Neurons: 5
+	mse:  20.217536557596766 , mae: 3.983859924932542
+	P-value _MLP:  1.7343976283205784e-06
+ARMA+MLP
+	['lag_1', 'lag_3', 'lag_9', 'lag_5', 'lag_12']
+	Hidden Neurons : 35
+	mse:  10.25103005888442 , mae: 2.5970758322530387
+	P-value _armaMLP:  1.7343976283205784e-06
+ESN:
+	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
+	Hidden Neurons: 5
+	mse:  4.4647768408989545 , mae: 0.7651150984362701
+	P-value _ESN:  1.7343976283205784e-06
+ARMA+ESN
+	['lag_1', 'lag_3', 'lag_9', 'lag_5', 'lag_12']
+	Hidden Neurons : 5
+	mse:  11.507830804626538 , mae: 2.7577455291455557
+	P-value _armaESN:  1.7343976283205784e-06
+RBF:
+	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
+	Hidden Neurons: 5
+	mse:  20.416354036619897 , mae: 3.5779653035245333
+	P-value _RBF:  1.7343976283205784e-06
+ARMA+RBF
+	['lag_1', 'lag_3', 'lag_9', 'lag_5', 'lag_12']
+	Hidden Neurons : 5
+	mse:  16.65244974605502 , mae: 3.595305882268127
+	P-value _armaRBF:  1.7343976283205784e-06
+Ended:  09/12/2021 02:54:37
