@@ -8,14 +8,14 @@ def MlpPredict(serie):
 
     X_train, y_train, X_val, y_val, X_test, y_test, scalerTest = prepareDataToANN(serie, estimator='MLP')
 
-    idx: MultiIndex = MultiIndex.from_product([[i for i in range(5, 50, 5)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
+    idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
 
     #--------------- VALIDATION ---------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
-    validationErrorAverageDF = DataFrame(index=[i for i in range(5, 50, 5)], columns=['mse', 'mae'])
+    validationErrorAverageDF = DataFrame(index=[i for i in range(10, 51, 10)], columns=['mse', 'mae'])
 
-    for n_hidden in range(5, 50, 5):
+    for n_hidden in range(10, 51, 10):
 
         for test in range(0,30):
             predicted = mlpPredict(hidden_dim=n_hidden,
