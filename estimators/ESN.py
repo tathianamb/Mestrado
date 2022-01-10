@@ -1,12 +1,17 @@
 from Processing.Evaluation import metricError
 from estimators.baseESN import esnPredict
-from Processing.Process import getIDXMinMSE, prepareDataToANN
-from pandas import Series, DataFrame, MultiIndex
+from Processing.Process import getIDXMinMSE
+from pandas import DataFrame, MultiIndex
 
 
-def EsnPredict(serie):
+def EsnPredict(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest):
 
-    X_train, y_train, X_val, y_val, X_test, y_test, scalerTest = prepareDataToANN(serie, estimator='ESN')
+    X_train = dfProcessedTrain.loc[:, dfProcessedTrain.columns != "actual"]
+    y_train = dfProcessedTrain["actual"]
+    X_val = dfProcessedVal.loc[:, dfProcessedVal.columns != "actual"]
+    y_val = dfProcessedVal["actual"]
+    X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
+    y_test = dfProcessedTest["actual"]
 
     idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
 

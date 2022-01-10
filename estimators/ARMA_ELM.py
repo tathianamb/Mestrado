@@ -1,17 +1,22 @@
 from estimators.ARMA import armaPredict
 from estimators.baseELM import elmPredict
-from pandas import DataFrame, MultiIndex
+from pandas import DataFrame, MultiIndex, concat
 from Processing.Evaluation import metricError
-from Processing.Process import getIDXMinMSE, prepareDataToANN
+from Processing.Process import getIDXMinMSE
 
 
-def armaElmPredict(serie, order):
-    predictionErrorSerie, predictedSeries = armaPredict(serie, isHybrid=True, order=order)
+def armaElmPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
+    predictionErrorSerie, predictedSeries = armaPredict(concat(dfProcessedTrain["actual"], dfProcessedVal["actual"], dfProcessedTest["actual"]), isHybrid=True, order=order)
 
     # --------------- LINEAR MODELS PREDICT ENDING  ---------------
     # --------------- ANN PREDICT BEGINNING ---------------
 
-    X_train, y_train, X_val, y_val, X_test, y_test, scalerTest = prepareDataToANN(predictionErrorSerie, estimator='ELM')
+    X_train = dfProcessedTrain.loc[:, dfProcessedTrain.columns != "actual"]
+    y_train = dfProcessedTrain["actual"]
+    X_val = dfProcessedVal.loc[:, dfProcessedVal.columns != "actual"]
+    y_val = dfProcessedVal["actual"]
+    X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
+    y_test = dfProcessedTest["actual"]
 
     idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]],
                                               names=['nneurons', 'test'])
