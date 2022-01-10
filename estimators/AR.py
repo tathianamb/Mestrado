@@ -38,8 +38,8 @@ def arPredict(serie: Series, isHybrid=False, order=None):
             p = p_
 
 
-    model = ARIMA(trainS, order=(p, 0, q)).fit(method='yule_walker')
-    order=(p, 0, q)
+    model = ARIMA(trainS, order=(p, 0, 0)).fit(method='yule_walker')
+    order=(p, 0, 0)
     print('\t' + str((order)))
 
     # predict test series
