@@ -18,7 +18,7 @@ def __convertDate(days):
 
 
 def fileToSerie(name: str):
-    dataframe = csv('IA/data/time-series-input/' + name, names=['year', 'day', 'min', 'ws_10m'], delimiter=';', keep_default_na=False)
+    dataframe = csv('data/time-series-input/' + name, names=['year', 'day', 'min', 'ws_10m'], delimiter=';', keep_default_na=False)
     dataframe['min'] = dataframe['min'].apply(__convertTime)
     dataframe['day'] = dataframe['day'].apply(__convertDate)
 
