@@ -19,7 +19,7 @@ from estimators.ELM import ElmPredict
 from estimators.ESN import EsnPredict
 from estimators.MLP import MlpPredict
 from estimators.RBF import RbfPredict
-from preProcessing.PreProcessing import prepareDataToANN
+from preProcessing.PreProcessing import prepareDataToANN, prepareDataToLinearModels
 from readfile.ReadFile import fileToSerie
 
 filterwarnings("ignore")
@@ -41,20 +41,23 @@ def baseData():
     return serie
 
 
-def apply_preProcess(serie):
-    return prepareDataToANN(serie)
+def apply_preProcess(serie, toLinearModels = False):
+    if toLinearModels:
+        return prepareDataToLinearModels(serie)
+    else:
+        return prepareDataToANN(serie)
 
 
-def AR(serie):
-    print("ARMA:")
-    mse, mae, testDF_ar, order = arPredict(serie)
+def AR(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM):
+    print("AR:")
+    mse, mae, testDF_ar, order = arPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
     print("\tmse: ", mse, ", mae:", mae)
     return testDF_ar, order
 
 
-def ARMA(serie):
+def ARMA(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM):
     print("ARMA:")
-    mse, mae, testDF_arma, order = armaPredict(serie)
+    mse, mae, testDF_arma, order = armaPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
     print("\tmse: ", mse, ", mae:", mae)
     return testDF_arma, order
 
@@ -150,17 +153,17 @@ def main():
     print("Started: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     serie = baseData()
-    dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = apply_preProcess(serie)
-
+    dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = apply_preProcess(serie, toLinearModels=False)
+    dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM = apply_preProcess(serie, toLinearModels=True)
     allMSE = DataFrame(index=[i for i in range(0, 30)])
 
     # ------------------------ AR ------------------------
 
-    output_ar, order = AR(concat(dfProcessedTrain["actual"], dfProcessedVal["actual"], dfProcessedTest["actual"]))
+    #output_ar, order = AR(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
 
     # ------------------------ ARMA ------------------------
 
-    output_arma, order = ARMA(concat(dfProcessedTrain["actual"], dfProcessedVal["actual"], dfProcessedTest["actual"]))
+    output_arma, order = ARMA(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
 
     # ------------------------ ELM ------------------------
 
