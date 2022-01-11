@@ -1,30 +1,26 @@
-from pandas import Series
+from pandas import Series, concat
 from statsmodels.tsa.arima.model import ARIMA
 from Processing.Evaluation import metricError
-from sklearn.model_selection import train_test_split
-from numpy import concatenate
 
-def armaPredict(serie: Series, isHybrid=False, order=None):
+def armaPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
-    trainS, testS = train_test_split(serie, test_size=0.2, shuffle=False)
     forecastsTest, predictedTest = [], []
 
     if isHybrid:
         model = ARIMA(trainS, order=order).fit(method='innovations_mle')
-        # predict train series
+
         predictedTrain = model.predict(n_periods=len(trainS))
 
         errorTrain = trainS - predictedTrain
 
-        # predict test series
         for sample in testS.values:
             predictedTest.append(model.forecast()[0])
             model = model.append([sample])
 
         errorTest = testS - predictedTest
 
-        errorSeries = Series(concatenate((errorTrain, errorTest), axis=None), index=serie.index)
-        predictedSeries = Series(concatenate((predictedTrain, predictedTest), axis=None), index=serie.index)
+        errorSeries = concat(errorTrain, errorTest)
+        predictedSeries = concat(predictedTrain, predictedTest)
 
         return errorSeries, predictedSeries
 
@@ -44,11 +40,12 @@ def armaPredict(serie: Series, isHybrid=False, order=None):
     print('\t' + str((order)))
 
     # predict test series
-    for sample in testS:
+    for sample in testS.values:
         forecastsTest.append(model.forecast()[0])
         model = model.append([sample])
 
     predictedTest = Series(data=forecastsTest, index=testS.index, name='Predicted')
+    predictedTest = (((predictedTest + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
     mse, mae, errorTest = metricError(predictedTest, testS)
 
     return mse, mae, predictedTest, order
