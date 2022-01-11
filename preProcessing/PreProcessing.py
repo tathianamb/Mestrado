@@ -62,7 +62,7 @@ def featureSelectionPACF(serie):
     pacf_values, confint = pacf(serie, nlags=30, alpha=0.05)
     lower_bound = confint[1,0] - pacf_values[1]
     upper_bound = confint[1,1] - pacf_values[1]
-    print(lower_bound, upper_bound)
+    print("\t", lower_bound, upper_bound)
     significant_pacf_values = {}
     for i in range(1, len(pacf_values)):
         if pacf_values[i] >= upper_bound or pacf_values[i] <= lower_bound:
@@ -104,13 +104,35 @@ def prepareDataToANN(serie):
     scalerVal = MinMaxScaler(feature_range=(-1, 1))
     scalerTest = MinMaxScaler(feature_range=(-1, 1))
 
-    processedTrain = scalerTrain.fit_transform(train)
-    processedVal = scalerVal.fit_transform(validation)
-    processedTest = scalerTest.fit_transform(test)
+    columns = train.columns != "actual"
 
-    dfProcessedTrain = DataFrame(data=processedTrain, index=train.index, columns=train.columns)
-    dfProcessedVal = DataFrame(data=processedVal, index=validation.index, columns=validation.columns)
-    dfProcessedTest = DataFrame(data=processedTest, index=test.index, columns=test.columns)
+    processedTrain = scalerTrain.fit_transform(train.loc[:, columns])
+    processedVal = scalerVal.fit_transform(validation.loc[:, columns])
+    processedTest = scalerTest.fit_transform(test.loc[:, columns])
 
+    dfProcessedTrain = DataFrame(data=processedTrain, index=train.index, columns=train.loc[:, columns].columns)
+    dfProcessedVal = DataFrame(data=processedVal, index=validation.index, columns=validation.loc[:, columns].columns)
+    dfProcessedTest = DataFrame(data=processedTest, index=test.index, columns=test.loc[:, columns].columns)
+
+    dfProcessedTrain["actual"] = train["actual"]
+    dfProcessedVal["actual"] = validation["actual"]
+    dfProcessedTest["actual"] = test["actual"]
 
     return dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest
+
+def prepareDataToLinearModels(serie):
+
+    train, test = train_test_split(serie, train_size=0.6, shuffle=False)
+
+    minMaxTest = (test.to_numpy().min(), test.to_numpy().max())
+
+    scalerTrain = MinMaxScaler(feature_range=(-1, 1))
+    scalerTest = MinMaxScaler(feature_range=(-1, 1))
+
+    processedTrain = scalerTrain.fit_transform(train.values.reshape(-1,1))
+    processedTest = scalerTest.fit_transform(test.values.reshape(-1,1))
+
+    dfProcessedTrain = DataFrame(data=processedTrain, index=train.index)
+    dfProcessedTest = DataFrame(data=processedTest, index=test.index)
+
+    return dfProcessedTrain, dfProcessedTest, minMaxTest
