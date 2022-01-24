@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__/**
 *.py[cod]
 *$py.class
 
@@ -127,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/time-series-output/outputBrasilia/log (Cópia em conflito de Tathiana Barchi 2021-12-04).txt
