@@ -29,10 +29,10 @@ def armaMlpPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, 
         for test in range(0, 30):
             predicted = mlpPredict(hidden_dim=n_hidden,
                                    x_train=X_train,
-                                   y_train=y_train, x_test=X_test,
-                                   y_test=y_test)
+                                   y_train=y_train, x_test=X_val,
+                                   y_test=y_val)
 
-            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_test)
+            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_val)
 
             validationErrorDF.loc[(n_hidden, test), 'mse'] = validationErrorMSE
             validationErrorDF.loc[(n_hidden, test), 'mae'] = validationErrorMAE

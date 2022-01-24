@@ -33,7 +33,7 @@ def armaEsnPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, 
                                    x_test=X_val,
                                    y_test=y_val)
 
-            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_test)
+            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_val)
 
             validationErrorDF.loc[(n_hidden, test), 'mse'] = validationErrorMSE
             validationErrorDF.loc[(n_hidden, test), 'mae'] = validationErrorMAE
