@@ -21,8 +21,8 @@ def arPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
         errorTest = testS - predictedTest
 
-        errorSeries = concat(errorTrain, errorTest)
-        predictedSeries = concat(predictedTrain, predictedTest)
+        errorSeries = concat([errorTrain, errorTest])
+        predictedSeries = concat([predictedTrain, Series(predictedTest)])
 
         return errorSeries, predictedSeries
 

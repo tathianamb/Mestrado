@@ -1,13 +1,12 @@
-from estimators.ARMA import armaPredict
+from estimators.AR import arPredict
 from estimators.baseELM import elmPredict
 from pandas import DataFrame, MultiIndex, concat
 from Processing.Evaluation import metricError
 from Processing.Process import getIDXMinMSE
 from preProcessing.PreProcessing import prepareDataToANN
 
-
-def armaElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
-    errorSeries, predictedSeries = armaPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, isHybrid=True, order=order)
+def arElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
+    errorSeries, predictedSeries = arPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, isHybrid=True, order=order)
     dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = prepareDataToANN(errorSeries)
 
     # --------------- LINEAR MODELS PREDICT ENDING  ---------------
@@ -57,8 +56,6 @@ def armaElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
                                x_train=X_train,
                                y_train=y_train, x_test=X_test,
                                y_test=y_test)
-        testDF[test] = \
-        ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).values.reshape(1, -1)[
-            0] + predictedSeries[-len(y_test):].values
+        testDF[test] = ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).values.reshape(1, -1)[0] + predictedSeries[-len(y_test):].values
         testDF[test] = (((testDF[test] + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

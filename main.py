@@ -10,6 +10,7 @@ from pandas import DataFrame, concat
 
 from Processing.Evaluation import wilcoxonTest
 from estimators.AR import arPredict
+from estimators.AR_ELM import arElmPredict
 from estimators.ARMA import armaPredict
 from estimators.ARMA_ELM import armaElmPredict
 from estimators.ARMA_ESN import armaEsnPredict
@@ -54,6 +55,14 @@ def AR(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM):
     print("\tmse: ", mse, ", mae:", mae)
     return testDF_ar, order
 
+def ARandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
+    print("AR+ELM")
+    n_hidden_arELM, validationErrorAverageDF_arELM, testDF_arELM = arElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
+    print("\tHidden Neurons: " + str(n_hidden_arELM))
+    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=testDF_arELM, actual=dfProcessedTest_LM[-len(testDF_arELM):])
+    print("\tP-value _arELM: ", p)
+    return testDF_arELM, mseTests
+
 
 def ARMA(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM):
     print("ARMA:")
@@ -72,13 +81,11 @@ def ELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest
     return testDF_ELM, mseTests
 
 
-def ARMAandELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
+def ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
     print("ARMA+ELM")
-    n_hidden_armaELM, validationErrorAverageDF_armaELM, testDF_armaELM = armaElmPredict(dfProcessedTrain,
-                                                                                        dfProcessedVal, dfProcessedTest,
-                                                                                        minMaxVal, minMaxTest, order)
+    n_hidden_armaELM, validationErrorAverageDF_armaELM, testDF_armaELM = armaElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     print("\tHidden Neurons: " + str(n_hidden_armaELM))
-    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=testDF_armaELM, actual=dfProcessedTest["actual"])
+    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=testDF_armaELM, actual=dfProcessedTest_LM[-len(testDF_armaELM):])
     print("\tP-value _armaELM: ", p)
     return testDF_armaELM, mseTests
 
@@ -93,13 +100,11 @@ def MLP(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest
     return testDF_MLP, mseTests
 
 
-def ARMAandMLP(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
+def ARMAandMLP(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
     print("ARMA+MLP")
-    n_hidden_armaMLP, validationErrorAverageDF_armaMLP, testDF_armaMLP = armaMlpPredict(dfProcessedTrain,
-                                                                                        dfProcessedVal, dfProcessedTest,
-                                                                                        minMaxVal, minMaxTest, order)
+    n_hidden_armaMLP, validationErrorAverageDF_armaMLP, testDF_armaMLP = armaMlpPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     print("\tHidden Neurons: " + str(n_hidden_armaMLP))
-    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=testDF_armaMLP, actual=dfProcessedTest["actual"])
+    w, p, hybridSystemPredict, mseTests = wilcoxonTest(outputs=testDF_armaMLP, actual=dfProcessedTest_LM[-len(testDF_armaMLP):])
     print("\tP-value _armaMLP: ", p)
     return testDF_armaMLP, mseTests, hybridSystemPredict
 
@@ -114,13 +119,11 @@ def ESN(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest
     return testDF_ESN, mseTests
 
 
-def ARMAandESN(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
+def ARMAandESN(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
     print("ARMA+ESN")
-    n_hidden_armaESN, validationErrorAverageDF_armaESN, testDF_armaESN = armaEsnPredict(dfProcessedTrain,
-                                                                                        dfProcessedVal, dfProcessedTest,
-                                                                                        minMaxVal, minMaxTest, order)
+    n_hidden_armaESN, validationErrorAverageDF_armaESN, testDF_armaESN = armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     print("\tHidden Neurons: " + str(n_hidden_armaESN))
-    w, p, armaEsnPredicted, mseTests = wilcoxonTest(outputs=testDF_armaESN, actual=dfProcessedTest["actual"])
+    w, p, armaEsnPredicted, mseTests = wilcoxonTest(outputs=testDF_armaESN, actual=dfProcessedTest_LM[-len(testDF_armaESN):])
     print("\tP-value _armaESN: ", p)
     return testDF_armaESN, mseTests
 
@@ -135,13 +138,11 @@ def RBF(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest
     return testDF_RBF, mseTests
 
 
-def ARMAandRBF(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
+def ARMAandRBF(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
     print("ARMA+RBF")
-    n_hidden_armaRBF, validationErrorAverageDF_armaRBF, testDF_armaRBF = armaRbfPredict(dfProcessedTrain,
-                                                                                        dfProcessedVal, dfProcessedTest,
-                                                                                        minMaxVal, minMaxTest, order)
+    n_hidden_armaRBF, validationErrorAverageDF_armaRBF, testDF_armaRBF = armaRbfPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     print("\tHidden Neurons: " + str(n_hidden_armaRBF))
-    w, p, armaRbfPredicted, mseTests = wilcoxonTest(outputs=testDF_armaRBF, actual=dfProcessedTest["actual"])
+    w, p, armaRbfPredicted, mseTests = wilcoxonTest(outputs=testDF_armaRBF, actual=dfProcessedTest_LM[-len(testDF_armaRBF):])
     print("\tP-value _armaRBF: ", p)
     return testDF_armaRBF, mseTests
 
@@ -153,8 +154,8 @@ def main():
     print("Started: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     serie = baseData()
-    dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = apply_preProcess(serie, toLinearModels=False)
-    dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM = apply_preProcess(serie, toLinearModels=True)
+    dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = apply_preProcess(serie[-300:], toLinearModels=False)
+    dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM = apply_preProcess(serie[-300:], toLinearModels=True)
     allMSE = DataFrame(index=[i for i in range(0, 30)])
 
     # ------------------------ AR ------------------------
@@ -167,35 +168,37 @@ def main():
 
     # ------------------------ ELM ------------------------
 
-    output_elm, mseTests = ELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
-    allMSE["ELM"] = mseTests
+    #output_elm, mseTests = ELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
+    #allMSE["ELM"] = mseTests
+
+    # ------------------------ AR ELM ------------------------
+
+    #output_arELM, mseTests = ARandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
+    #allMSE["AR+ELM"] = mseTests
 
     # ------------------------ ARMA ELM ------------------------
 
-    output_armaELM, mseTests = ARMAandELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest,
-                                          order)
-    allMSE["ARMA+ELM"] = mseTests
+    #output_armaELM, mseTests = ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
+    #allMSE["ARMA+ELM"] = mseTests
 
     # ------------------------ MLP ------------------------
 
-    output_MLP, mseTests = MLP(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
-    allMSE["MLP"] = mseTests
+    #output_MLP, mseTests = MLP(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
+    #allMSE["MLP"] = mseTests
 
     # ------------------------ ARMA MLP ------------------------
 
-    output_armaMLP, mseTests, hybridSystemPredict = ARMAandMLP(dfProcessedTrain, dfProcessedVal, dfProcessedTest,
-                                                               minMaxVal, minMaxTest, order)
-    allMSE["ARMA+MLP"] = mseTests
+    #output_armaMLP, mseTests, hybridSystemPredict = ARMAandMLP(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
+    #allMSE["ARMA+MLP"] = mseTests
 
     # ------------------------------------------------
 
-    output_ESN, mseTests = ESN(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
-    allMSE["ESN"] = mseTests
+    #output_ESN, mseTests = ESN(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest)
+    #allMSE["ESN"] = mseTests
 
     # ------------------------------------------------
 
-    output_armaESN, mseTests = ARMAandESN(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest,
-                                          order)
+    output_armaESN, mseTests = ARMAandESN(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     allMSE["ARMA+ESN"] = mseTests
 
     # ------------------------------------------------
@@ -205,13 +208,25 @@ def main():
 
     # ------------------------------------------------
 
-    output_armaRBF, mseTests = ARMAandRBF(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest,
-                                          order)
+    output_armaRBF, mseTests = ARMAandRBF(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
     allMSE["ARMA+RBF"] = mseTests
 
     # ------------------------------------------------
 
     outputFinal = DataFrame(index=hybridSystemPredict.index)
+
+    '''Aqui poderia ser feito o preenchimento das variáveis e depois a alteração do index??
+        
+        -- trocar isso --
+            outputFinal = DataFrame(index=hybridSystemPredict.index)
+        
+        -- por isso --
+            outputFinal: DataFrame = DataFrame()
+            ....
+            outputFinal["AR"] = output_ar
+            ....
+            outputFinal.set_index(hybridSystemPredict.index)
+    '''
 
     outputFinal["AR"] = output_ar
     outputFinal["ARMA"] = output_arma

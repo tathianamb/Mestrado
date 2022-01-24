@@ -19,21 +19,25 @@ def armaPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
         errorTest = testS - predictedTest
 
-        errorSeries = concat(errorTrain, errorTest)
-        predictedSeries = concat(predictedTrain, predictedTest)
+        errorSeries = concat([errorTrain, errorTest])
+        predictedSeries = concat([predictedTrain, Series(predictedTest)])
 
         return errorSeries, predictedSeries
 
     forecastsTest = []
     aic = float('inf')
 
-    for p_ in range(1, 10):
-        for q_ in range(1, 10):
-            model = ARIMA(trainS, order=(p_, 0, q_)).fit(method='innovations_mle')
-            aic_ = model.aic
-            if aic_ < aic:
-                p = p_
-                q = q_
+    try:
+        for p_ in range(1, 10):
+            for q_ in range(1, 10):
+                model = ARIMA(trainS, order=(p_, 0, q_)).fit(method='innovations_mle')
+                aic_ = model.aic
+                if aic_ < aic:
+                    p = p_
+                    q = q_
+
+    except ZeroDivisionError:
+        None
 
     model = ARIMA(trainS, order=(p, 0, q)).fit(method='innovations_mle')
     order=(p, 0, q)

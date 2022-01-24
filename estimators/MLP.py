@@ -28,6 +28,8 @@ def MlpPredict(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, min
                                      y_train=y_train, x_test=X_val,
                                      y_test=y_val)
 
+            predicted = (((predicted + 1) / 2) * (max(minMaxVal) - min(minMaxVal))) + min(minMaxVal)
+
             validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_val)
 
             validationErrorDF.loc[(n_hidden, test), 'mse'] = validationErrorMSE
@@ -48,6 +50,6 @@ def MlpPredict(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, min
                                                                y_train=y_train, x_test=X_test,
                                                                y_test=y_test)
         testDF[test] = predicted
-        testDF[test] = ((testDF[test]+1)/2)*(max(scalerTest) - min(scalerTest)) + min(scalerTest)
+        testDF[test] = ((testDF[test]+1)/2)*(max(minMaxTest) - min(minMaxTest)) + min(minMaxTest)
 
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF
