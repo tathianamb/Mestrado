@@ -3,9 +3,14 @@ from estimators.baseESN import esnPredict
 from pandas import DataFrame, MultiIndex, concat
 from Processing.Evaluation import metricError
 from Processing.Process import getIDXMinMSE
+from preProcessing.PreProcessing import prepareDataToANN
 
-def armaEsnPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, order):
-    predictionErrorSerie, predictedSeries = armaPredict(concat(dfProcessedTrain["actual"], dfProcessedVal["actual"], dfProcessedTest["actual"]), isHybrid=True, order=order)
+
+def armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
+    errorSeries, predictedSeries = armaPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM,
+                                               isHybrid=True, order=order)
+    dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = prepareDataToANN(errorSeries)
+
 
     # --------------- LINEAR MODELS PREDICT ENDING  ---------------
     # --------------- ANN PREDICT BEGINNING ---------------
@@ -16,15 +21,15 @@ def armaEsnPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, 
     X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
     y_test = dfProcessedTest["actual"]
 
-    idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]],
+    idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 100, 10)], [j for j in range(0, 30)]],
                                               names=['nneurons', 'test'])
 
     # --------------- VALIDATION ---------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
-    validationErrorAverageDF = DataFrame(index=[i for i in range(10, 51, 10)], columns=['mse', 'mae'])
+    validationErrorAverageDF = DataFrame(index=[i for i in range(20, 100, 10)], columns=['mse', 'mae'])
 
-    for n_hidden in range(10, 51, 10):
+    for n_hidden in range(20, 100, 10):
 
         for test in range(0, 30):
             predicted = esnPredict(n_reservoir=n_hidden,
@@ -32,6 +37,8 @@ def armaEsnPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, 
                                    y_train=y_train,
                                    x_test=X_val,
                                    y_test=y_val)
+
+            predicted = (((predicted + 1) / 2) * (max(minMaxVal) - min(minMaxVal))) + min(minMaxVal)
 
             validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_val)
 
@@ -54,6 +61,8 @@ def armaEsnPredict(dfProcessedTrain,dfProcessedVal, dfProcessedTest, minMaxVal, 
                                x_test=X_test,
                                y_test=y_test)
 
-        testDF[test] = ((((predicted + 1) / 2) * (max(scalerTest) - min(scalerTest))) + min(scalerTest)).reshape(1,-1)[0] + predictedSeries[-len(y_test):]
+        testDF[test] = \
+        ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1, -1)[
+            0] + predictedSeries[-len(y_test):].values
 
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

@@ -57,6 +57,7 @@ def armaMlpPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
                                y_train=y_train, x_test=X_test,
                                y_test=y_test)
 
-        testDF[test] = ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1,-1)[0] + predictedSeries[-len(y_test):].values
-        testDF[test] = (((testDF[test] + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
+        testDF[test] = \
+            ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1,-1)[
+                0] + predictedSeries[-len(y_test):].values
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

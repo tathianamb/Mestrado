@@ -178,8 +178,8 @@ def main():
 
     # ------------------------ ARMA ELM ------------------------
 
-    #output_armaELM, mseTests = ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
-    #allMSE["ARMA+ELM"] = mseTests
+    output_armaELM, mseTests = ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order)
+    allMSE["ARMA+ELM"] = mseTests
 
     # ------------------------ MLP ------------------------
 
