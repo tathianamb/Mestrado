@@ -19,15 +19,15 @@ def armaRbfPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
     X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
     y_test = dfProcessedTest["actual"]
 
-    idx: MultiIndex = MultiIndex.from_product([[i for i in range(20, 100, 10)], [j for j in range(0, 30)]],
+    idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]],
                                               names=['nneurons', 'test'])
 
     # --------------- VALIDATION ---------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
-    validationErrorAverageDF = DataFrame(index=[i for i in range(20, 100, 10)], columns=['mse', 'mae'])
+    validationErrorAverageDF = DataFrame(index=[i for i in range(10, 51, 10)], columns=['mse', 'mae'])
 
-    for n_hidden in range(20, 100, 10):
+    for n_hidden in range(10, 51, 10):
 
         for test in range(0, 30):
             predicted = rbfPredict(hidden_dim=n_hidden,
@@ -58,7 +58,7 @@ def armaRbfPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
                                y_test=y_test)
 
         testDF[test] = \
-            ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).values.reshape(1, -1)[
+            ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1, -1)[
                 0] + predictedSeries[-len(y_test):].values
 
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

@@ -1,16 +1,14 @@
-from estimators.ARMA import armaPredict
-from estimators.baseESN import esnPredict
+from estimators.AR import arPredict
+from estimators.baseMLP import mlpPredict
 from pandas import DataFrame, MultiIndex, concat
 from Processing.Evaluation import metricError
 from Processing.Process import getIDXMinMSE
 from preProcessing.PreProcessing import prepareDataToANN
 
 
-def armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
-    errorSeries, predictedSeries = armaPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM,
-                                               isHybrid=True, order=order)
+def arMlpPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
+    errorSeries, predictedSeries = arPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, isHybrid=True, order=order)
     dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = prepareDataToANN(errorSeries)
-
 
     # --------------- LINEAR MODELS PREDICT ENDING  ---------------
     # --------------- ANN PREDICT BEGINNING ---------------
@@ -32,10 +30,9 @@ def armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
     for n_hidden in range(10, 51, 10):
 
         for test in range(0, 30):
-            predicted = esnPredict(n_reservoir=n_hidden,
+            predicted = mlpPredict(hidden_dim=n_hidden,
                                    x_train=X_train,
-                                   y_train=y_train,
-                                   x_test=X_val,
+                                   y_train=y_train, x_test=X_val,
                                    y_test=y_val)
 
             predicted = (((predicted + 1) / 2) * (max(minMaxVal) - min(minMaxVal))) + min(minMaxVal)
@@ -55,14 +52,12 @@ def armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order
     testDF: DataFrame = DataFrame(index=y_test.index)
 
     for test in range(0, 30):
-        predicted = esnPredict(n_reservoir=n_hidden,
+        predicted = mlpPredict(hidden_dim=n_hidden,
                                x_train=X_train,
-                               y_train=y_train,
-                               x_test=X_test,
+                               y_train=y_train, x_test=X_test,
                                y_test=y_test)
 
         testDF[test] = \
-        ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1, -1)[
-            0] + predictedSeries[-len(y_test):].values
-
+            ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).reshape(1,-1)[
+                0] + predictedSeries[-len(y_test):].values
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

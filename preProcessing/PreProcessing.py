@@ -119,10 +119,6 @@ def prepareDataToANN(serie):
     train, valTest = train_test_split(serie, train_size=0.6, shuffle=False)
     validation, test = train_test_split(valTest, test_size=0.5, shuffle=False)
 
-    '''train, _, _ = verify_toStationary(train.copy())
-    validation, scalerSTDValidation, scalerMeanValidation = verify_toStationary(validation.copy())
-    test, scalerSTDTest, scalerMeanTest = verify_toStationary(train.copy())'''
-
     lags = featureSelectionPACF(train)
 
     '''
@@ -141,6 +137,7 @@ def prepareDataToANN(serie):
               - Repetir para cada um: Train, Validation, Test
             (Isso fará que você use menos memória, deixando mais performático)
     '''
+
     train = generate_X(train, lags)
     validation = generate_X(validation, lags)
     test = generate_X(test, lags)

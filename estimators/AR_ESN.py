@@ -1,4 +1,4 @@
-from estimators.ARMA import armaPredict
+from estimators.AR import arPredict
 from estimators.baseESN import esnPredict
 from pandas import DataFrame, MultiIndex, concat
 from Processing.Evaluation import metricError
@@ -6,8 +6,8 @@ from Processing.Process import getIDXMinMSE
 from preProcessing.PreProcessing import prepareDataToANN
 
 
-def armaEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
-    errorSeries, predictedSeries = armaPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM,
+def arEsnPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
+    errorSeries, predictedSeries = arPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM,
                                                isHybrid=True, order=order)
     dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest = prepareDataToANN(errorSeries)
 
