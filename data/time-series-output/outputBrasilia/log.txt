@@ -1,85 +1,4 @@
-ARMA:
-	(9, 0, 9)
-	mse:  0.08113631807772916 , mae: 0.1976051772388315
-ELM:
-	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
-	Hidden Neurons: 29
-	mse:  0.08415732196787651 , mae: 0.19920076929910746
-	P-value _ELM:  1.7343976283205784e-06
-ARMA+ELM
-	['lag_2', 'lag_3', 'lag_1', 'lag_5', 'lag_4']
-	Hidden Neurons : 27
-	mse:  0.08379463184094342 , mae: 0.2038773545119554
-	P-value _armaELM:  1.7343976283205784e-06
-MLP:
-	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
-	Hidden Neurons: 5
-	mse:  0.08641637221509542 , mae: 0.20721823632383868
-	P-value _MLP:  1.7343976283205784e-06
-ARMA+MLP
-	['lag_2', 'lag_3', 'lag_1', 'lag_5', 'lag_4']
-	Hidden Neurons : 20
-	mse:  0.09808538468589416 , mae: 0.2381469737048616
-	P-value _armaMLP:  1.7343976283205784e-06
-ESN:
-	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
-	Hidden Neurons: 9
-	mse:  0.08196486946240969 , mae: 0.1997445347325745
-	P-value _ESN:  1.7343976283205784e-06
-ARMA+ESN
-	['lag_2', 'lag_3', 'lag_1', 'lag_5', 'lag_4']
-	Hidden Neurons : 5
-	mse:  0.08224812497247942 , mae: 0.20115337646120895
-	P-value _armaESN:  1.7343976283205784e-06
-RBF:
-	['lag_1', 'lag_2', 'lag_3', 'lag_4', 'lag_5']
-	Hidden Neurons: 5
-	mse:  0.14063145397217375 , mae: 0.2550122859318755
-	P-value _RBF:  1.7343976283205784e-06
-ARMA+RBF
-	['lag_2', 'lag_3', 'lag_1', 'lag_5', 'lag_4']
-	Hidden Neurons : 5
-	mse:  0.12080474110929723 , mae: 0.2815896259222364
-	P-value _armaRBF:  1.7343976283205784e-06
-Started:  25/01/2022 16:38:33
-Lower_bound, upper_bound:
-	 -0.17891941437171566 0.17891941437171577
-Significant lags: 
-	[1, 23]
-AR:
-	(9, 0, 0)
-	mse:  1.1252233805087237 , mae: 1.00874373419016
-ARMA:
-	(2, 0, 2)
-	mse:  1.125235305006556 , mae: 1.00814422467863
-ELM:
-	Hidden Neurons: 10
-	mse:  0.005179991574723166 , mae: 0.0636483896238184
-	P-value _ELM:  1.7343976283205784e-06
-AR+ELM
-Started:  25/01/2022 16:39:59
-Lower_bound, upper_bound:
-	 -0.17891941437171566 0.17891941437171577
-Significant lags: 
-	[1, 23]
-AR:
-	(9, 0, 0)
-	mse:  1.1252233805087237 , mae: 1.00874373419016
-ARMA:
-	(2, 0, 2)
-	mse:  1.125235305006556 , mae: 1.00814422467863
-ELM:
-	Hidden Neurons: 10
-	mse:  0.005734829948573622 , mae: 0.06433705962656566
-	P-value _ELM:  1.7343976283205784e-06
-AR+ELM
-Lower_bound, upper_bound:
-	 -0.17891941437171568 0.17891941437171568
-Significant lags: 
-	[22]
-	Hidden Neurons: 10
-	mse:  1.1887075291815297 , mae: 0.9789805879883947
-Started:  25/01/2022 16:41:28
+Started:  25/01/2022 17:28:38
 Lower_bound, upper_bound:
 	 -0.146087090096097 0.146087090096097
 Significant lags: 
@@ -92,39 +11,72 @@ ARMA:
 	mse:  1.412529091010533 , mae: 1.1442879761299316
 ELM:
 	Hidden Neurons: 10
-	mse:  0.006620375056017892 , mae: 0.0666945662751632
+	mse:  0.006712984033830959 , mae: 0.06697221559254043
 	P-value _ELM:  1.7343976283205784e-06
 AR+ELM
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
+
 Significant lags: 
 	[10, 28]
 	Hidden Neurons: 10
-	mse:  1.6079912999586519 , mae: 1.2412793229475703
+	mse:  1.6093839872815523 , mae: 1.2413635105722238
 	P-value _arELM:  1.7343976283205784e-06
 ARMA+ELM
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
+
 Significant lags: 
 	[10]
-	Hidden Neurons: 70
-	mse:  1.6949264212496993 , mae: 1.2809744664487166
+	Hidden Neurons: 10
+	mse:  1.6943844685754756 , mae: 1.2807966237638895
 	P-value _armaELM:  1.7333066441991056e-06
 MLP:
 	Hidden Neurons: 20
-	mse:  0.006097925502682722 , mae: 0.0611188987031275
+	mse:  0.006138873295829878 , mae: 0.06157889903321557
 	P-value _MLP:  1.7343976283205784e-06
 AR+MLP
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
 Significant lags: 
 	[10, 28]
 	Hidden Neurons: 30
-	mse:  0.09580334330094256 , mae: 0.24844729369482582
+	mse:  0.0987125589442496 , mae: 0.2533144042266531
 	P-value _arMLP:  1.7343976283205784e-06
-Started:  25/01/2022 17:13:57
-Lower_bound, upper_bound:
-	 -0.146087090096097 0.146087090096097
+ARMA+MLP
+Significant lags:
+	[10]
+	Hidden Neurons: 50
+	mse:  1.532765728868333 , mae: 1.2171681887230001
+	P-value _armaMLP:  1.7343976283205784e-06
+ESN:
+	Hidden Neurons: 10
+	mse:  0.006273029423863019 , mae: 0.064442045386816
+	P-value _ESN:  1.7343976283205784e-06
+AR+ESN
+Significant lags:
+	[10, 28]
+	Hidden Neurons: 10
+	mse:  0.050680371360532564 , mae: 0.1810253979915669
+	P-value _arESN:  1.7343976283205784e-06
+ARMA+ESN
+Significant lags:
+	[10]
+	Hidden Neurons: 10
+	mse:  1.4522772798140968 , mae: 1.183794756852667
+	P-value _armaESN:  1.7343976283205784e-06
+RBF:
+	Hidden Neurons: 10
+	mse:  0.005528625427540045 , mae: 0.057746580357454266
+	P-value _RBF:  1.7343976283205784e-06
+AR+RBF
+Significant lags: 
+	[10, 28]
+	Hidden Neurons: 90
+	mse:  0.11583701227225206 , mae: 0.28574941081727856
+	P-value _arRBF:  1.7343976283205784e-06
+ARMA+RBF
+Significant lags: 
+	[10]
+	Hidden Neurons: 30
+	mse:  1.5091515239100237 , mae: 1.206899296226176
+	P-value _armaRBF:  1.7343976283205784e-06
+Ended:  25/01/2022 17:38:59
+Started:  25/01/2022 18:07:46
 Significant lags: 
 	[1, 11]
 AR:
@@ -135,41 +87,65 @@ ARMA:
 	mse:  1.412529091010533 , mae: 1.1442879761299316
 ELM:
 	Hidden Neurons: 10
-	mse:  0.006800716907539228 , mae: 0.06845356473780187
+	mse:  0.006517836961152324 , mae: 0.06769309628665242
 	P-value _ELM:  1.7343976283205784e-06
 AR+ELM
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
 Significant lags: 
 	[10, 28]
-	Hidden Neurons: 10
-	mse:  1.6098963190358697 , mae: 1.242066109020303
+	Hidden Neurons: 50
+	mse:  1.4216718918599458 , mae: 1.1516942479005425
 	P-value _arELM:  1.7343976283205784e-06
 ARMA+ELM
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
 Significant lags: 
 	[10]
-	Hidden Neurons: 90
-	mse:  1.6949252199061906 , mae: 1.280974013235975
+	Hidden Neurons: 100
+	mse:  1.6949264708634721 , mae: 1.2809744553336169
 	P-value _armaELM:  1.7343976283205784e-06
 MLP:
 	Hidden Neurons: 20
-	mse:  0.006129835801294504 , mae: 0.061713221657032864
+	mse:  0.006131486117300549 , mae: 0.06152379915665606
 	P-value _MLP:  1.7343976283205784e-06
 AR+MLP
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
 Significant lags: 
 	[10, 28]
-	Hidden Neurons: 30
-	mse:  0.09421407912940277 , mae: 0.24632336612772177
+	Hidden Neurons: 100
+	mse:  0.09666302596347837 , mae: 0.25005418328496015
 	P-value _arMLP:  1.7343976283205784e-06
 ARMA+MLP
-Lower_bound, upper_bound:
-	 -0.14608709009609694 0.14608709009609694
 Significant lags: 
 	[10]
-	Hidden Neurons: 40
-	mse:  1.533231987218004 , mae: 1.2173496920188986
+	Hidden Neurons: 70
+	mse:  1.5413143234140616 , mae: 1.2205218766948307
 	P-value _armaMLP:  1.7343976283205784e-06
+ESN:
+	Hidden Neurons: 10
+	mse:  0.006341891880599215 , mae: 0.06576712585384595
+	P-value _ESN:  1.7343976283205784e-06
+AR+ESN
+Significant lags: 
+	[10, 28]
+	Hidden Neurons: 50
+	mse:  0.05772788219898621 , mae: 0.20202422254572394
+	P-value _arESN:  1.7343976283205784e-06
+ARMA+ESN
+Significant lags: 
+	[10]
+	Hidden Neurons: 50
+	mse:  1.4845182093973535 , mae: 1.1960171371160984
+	P-value _armaESN:  1.7343976283205784e-06
+RBF:
+	Hidden Neurons: 10
+	mse:  0.005481008046717666 , mae: 0.05552029908433251
+	P-value _RBF:  1.7343976283205784e-06
+AR+RBF
+Significant lags: 
+	[10, 28]
+	Hidden Neurons: 90
+	mse:  0.10899363699936894 , mae: 0.27202486906315826
+	P-value _arRBF:  1.7343976283205784e-06
+ARMA+RBF
+Significant lags: 
+	[10]
+	Hidden Neurons: 50
+	mse:  1.5044685000562925 , mae: 1.204777888091477
+	P-value _armaRBF:  1.7343976283205784e-06

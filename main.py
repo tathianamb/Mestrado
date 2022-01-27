@@ -42,6 +42,7 @@ def baseData():
     serie = fileToSerie(base + ".csv")
     plot_pacf(serie)
     plt.savefig(base_dir + "/pacf.png", format="png")
+    plt.clf()
     return serie
 
 
@@ -294,6 +295,7 @@ def main():
 
     outputFinal.to_csv(base_dir + "/saida_teste_mse.csv", header=True, index=True)
     allMSE.to_csv(base_dir + "/all_mse.csv", header=True, index=True)
+    allMSE.boxplot()
     plt.savefig(base_dir + "/boxplot.png", format="png")
 
     print("Ended: ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))

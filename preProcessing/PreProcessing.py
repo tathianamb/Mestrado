@@ -84,8 +84,6 @@ def featureSelectionPACF(serie):
     pacf_values, confint = pacf(serie, nlags=30, alpha=0.05)
     lower_bound = confint[1, 0] - pacf_values[1]
     upper_bound = confint[1, 1] - pacf_values[1]
-    print("Lower_bound, upper_bound:")
-    print("\t", lower_bound, upper_bound)
 
     significant_pacf_values = {}
     for i in range(1, len(pacf_values)):
