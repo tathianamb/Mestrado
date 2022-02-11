@@ -53,6 +53,7 @@ def armaPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
     predictedTest = Series(data=forecastsTest, index=testS.index, name='Predicted')
     predictedTest = (((predictedTest + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
+    testS = (((testS + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
     mse, mae, errorTest = metricError(predictedTest, testS)
 
     return mse, mae, predictedTest, order

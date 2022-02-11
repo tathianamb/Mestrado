@@ -16,9 +16,12 @@ def arPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
         # predict test series
         for sample in testS.values:
-            predictedTest.append(model.forecast()[0])
+            forecastsTest.append(model.forecast()[0])
             model = model.append([sample])
 
+        predictedTest = Series(data=forecastsTest, index=testS.index, name='Predicted')
+        predictedTest = (((predictedTest + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
+        testS = (((testS + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
         errorTest = testS - predictedTest
 
         errorSeries = concat([errorTrain, errorTest])
@@ -26,7 +29,6 @@ def arPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
         return errorSeries, predictedSeries
 
-    forecastsTest = []
     aic = float('inf')
 
     for p_ in range(1, 10):
@@ -47,6 +49,7 @@ def arPredict(trainS, testS, minMaxTest_LM, isHybrid=False, order=None):
 
     predictedTest = Series(data=forecastsTest, index=testS.index, name='Predicted')
     predictedTest = (((predictedTest + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
+    testS = (((testS + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
     mse, mae, errorTest = metricError(predictedTest, testS)
 
     return mse, mae, predictedTest, order

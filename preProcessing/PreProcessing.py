@@ -119,23 +119,6 @@ def prepareDataToANN(serie):
 
     lags = featureSelectionPACF(train)
 
-    '''
-        Aqui poderia fazer um por um, chamando uma função...
-        Ou seja, gerar, setar, pegar informações e setar...
-            EX:
-              - Gerar: "generate_X(train, lags)"
-              - Setar: "
-                    columns = train.columns != "actual"
-                    processedTrain = scalerTrain.fit_transform(train.loc[:, columns])
-                    dfProcessedTrain = DataFrame(data=processedTrain, index=train.index, columns=train.loc[:, columns].columns)
-                    dfProcessedTrain["actual"] = train["actual"]
-              "
-              - Pegar informações, como o "columns"
-              - Retornar os valores que são importantes a você, que acredito ser "dfProcessedTrain"
-              - Repetir para cada um: Train, Validation, Test
-            (Isso fará que você use menos memória, deixando mais performático)
-    '''
-
     train = generate_X(train, lags)
     validation = generate_X(validation, lags)
     test = generate_X(test, lags)

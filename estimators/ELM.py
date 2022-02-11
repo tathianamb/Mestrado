@@ -12,14 +12,14 @@ def ElmPredict(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, min
     y_val = dfProcessedVal["actual"]
     X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
     y_test = dfProcessedTest["actual"]
-    idx: MultiIndex = MultiIndex.from_product([[i for i in range(10, 51, 10)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
+    idx: MultiIndex = MultiIndex.from_product([[i for i in range(50, 150, 10)], [j for j in range(0, 30)]], names=['nneurons', 'test'])
 
     #--------------- VALIDATION ---------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
-    validationErrorAverageDF = DataFrame(index=[i for i in range(10, 51, 10)], columns=['mse', 'mae'])
+    validationErrorAverageDF = DataFrame(index=[i for i in range(50, 150, 10)], columns=['mse', 'mae'])
 
-    for n_hidden in range(10, 51, 10):
+    for n_hidden in range(50, 150, 10):
 
         for test in range(0,30):
             predicted = elmPredict(hidden_dim=n_hidden,

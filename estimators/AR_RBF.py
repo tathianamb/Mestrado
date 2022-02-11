@@ -19,25 +19,25 @@ def arRbfPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
     X_test = dfProcessedTest.loc[:, dfProcessedTest.columns != "actual"]
     y_test = dfProcessedTest["actual"]
 
-    idx: MultiIndex = MultiIndex.from_product([[i for i in range(50,101, 10)], [j for j in range(0, 30)]],
+    idx: MultiIndex = MultiIndex.from_product([[i for i in range(50, 150, 10)], [j for j in range(0, 30)]],
                                               names=['nneurons', 'test'])
 
     # --------------- VALIDATION ---------------
 
     validationErrorDF: DataFrame = DataFrame(index=idx, columns=['mse', 'mae'])
-    validationErrorAverageDF = DataFrame(index=[i for i in range(50,101, 10)], columns=['mse', 'mae'])
+    validationErrorAverageDF = DataFrame(index=[i for i in range(50, 150, 10)], columns=['mse', 'mae'])
 
-    for n_hidden in range(50,101, 10):
+    for n_hidden in range(50, 150, 10):
 
         for test in range(0, 30):
             predicted = rbfPredict(hidden_dim=n_hidden,
                                    x_train=X_train,
-                                   y_train=y_train, x_test=X_val,
-                                   y_test=y_val)
+                                   y_train=y_train, x_test=X_test,
+                                   y_test=y_test)
 
             predicted = (((predicted + 1) / 2) * (max(minMaxVal) - min(minMaxVal))) + min(minMaxVal)
 
-            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_val)
+            validationErrorMSE, validationErrorMAE, _ = metricError(predictedValues=predicted, actualValues=y_test)
 
             validationErrorDF.loc[(n_hidden, test), 'mse'] = validationErrorMSE
             validationErrorDF.loc[(n_hidden, test), 'mae'] = validationErrorMAE

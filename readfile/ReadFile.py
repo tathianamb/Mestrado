@@ -24,4 +24,5 @@ def fileToSerie(name: str):
 
     dataframe['date'] = dataframe['day'] + '/' + dataframe['year'].astype(str) + '-' + dataframe['min']
     dataframe['date'] = dateTime(dataframe['date'], format='%d/%m/%Y-%H:%M')
+    dataframe = dataframe[dataframe['date'] < "2019-02-01"]
     return Series(data=list(dataframe['ws_10m'].astype(float)), index=list(dataframe['date']), name='Actual').asfreq('min')
