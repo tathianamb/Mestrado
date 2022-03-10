@@ -58,5 +58,4 @@ def arElmPredict(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order):
                                y_train=y_train, x_test=X_test,
                                y_test=y_test)
         testDF[test] = ((((predicted + 1) / 2) * (max(minMaxTest) - min(minMaxTest))) + min(minMaxTest)).values.reshape(1, -1)[0] + predictedSeries[-len(y_test):].values
-        testDF[test] = (((testDF[test] + 1) / 2) * (max(minMaxTest_LM) - min(minMaxTest_LM))) + min(minMaxTest_LM)
     return n_hidden, validationErrorAverageDF.loc[n_hidden], testDF

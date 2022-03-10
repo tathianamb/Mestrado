@@ -34,7 +34,7 @@ autograph.set_verbosity(0)
 
 import sys
 
-base = "SaoLuiz"
+base = "Brasilia"
 base_dir = "./data/time-series-output/output" + base
 
 
@@ -215,6 +215,8 @@ def main():
     tests, output_elm, mseTests = ELM(dfProcessedTrain, dfProcessedVal, dfProcessedTest, minMaxVal, minMaxTest, serie)
     allMSE["ELM"] = mseTests
     outputFinal["ELM"] = output_elm
+    del mseTests
+    del output_elm
 
     # ------------------------ AR ELM ------------------------
 
