@@ -205,7 +205,7 @@ def main():
 
     # ------------------------ ARMA ------------------------
 
-    output_arma, order_arma, mse = ARMA(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
+    '''output_arma, order_arma, mse = ARMA(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM)
     allMSE["ARMA"] = mse
     outputFinal["ARMA"] = output_arma
     del output_arma
@@ -216,7 +216,7 @@ def main():
     allMSE["ELM"] = mseTests
     outputFinal["ELM"] = output_elm
     del mseTests
-    del output_elm
+    del output_elm'''
 
     # ------------------------ AR ELM ------------------------
 
@@ -227,7 +227,7 @@ def main():
 
     # ------------------------ ARMA ELM ------------------------
 
-    tests, output_armaELM, mseTests = ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order_arma, serie)
+    '''tests, output_armaELM, mseTests = ARMAandELM(dfProcessedTrain_LM, dfProcessedTest_LM, minMaxTest_LM, order_arma, serie)
     allMSE["ARMA+ELM"] = mseTests
     outputFinal["ARMA+ELM"] = output_armaELM
     del output_armaELM
@@ -311,8 +311,7 @@ def main():
 
     print("Ensemble - Mediana:")
     print('\tmse: ', mse, ', mae:', MAE(y_true=serie[-len(outputFinal["Ensemble - Mediana"]):],
-                                        y_pred=outputFinal["Ensemble - Mediana"].values))
-
+                                        y_pred=outputFinal["Ensemble - Mediana"].values))'''
 
     outputFinal.to_csv(base_dir + "/saida_teste_mse.csv", header=True, index=True)
     allMSE.to_csv(base_dir + "/all_mse.csv", header=True, index=True)

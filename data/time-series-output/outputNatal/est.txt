@@ -1,0 +1,5 @@
+              Média Desvio padrão Mínimo Máximo
+Total        5.9776        2.6976  1.274   87.4
+Treinamento  6.2882        3.2207  1.524   87.4
+Validação    5.3936          1.17  1.511  25.81
+Teste        5.6299        1.7735  1.274   32.1

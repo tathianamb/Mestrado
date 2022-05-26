@@ -1,0 +1,95 @@
+Started:  21/02/2022 13:19:54
+Significant lags: 
+	[1, 2, 3, 4, 5, 6, 7, 8, 9, 12]
+AR:
+	(9, 0, 0)
+	mse:  0.07613549305564368 , mae: 0.188286065956235
+ARMA:
+	(2, 0, 2)
+	mse:  0.07524590485860082 , mae: 0.18770904056594484
+ELM:
+	Hidden Neurons: 110
+	mse:  0.08210669333301726 , mae: 0.1980982168966717
+	P-value _ELM:  1.7343976283205784e-06
+AR+ELM
+Significant lags: 
+	[5, 6, 7, 8, 11, 16, 17, 22, 24, 30]
+	Hidden Neurons: 70
+	mse:  22.163086481919056 , mae: 4.572785769693609
+	P-value _arELM:  1.7343976283205784e-06
+ARMA+ELM
+Significant lags: 
+	[2, 3, 5, 7, 10, 16, 17, 22, 27, 30]
+	Hidden Neurons: 110
+	mse:  0.08528885659878549 , mae: 0.2053603063537647
+	P-value _armaELM:  1.7343976283205784e-06
+MLP:
+	Hidden Neurons: 50
+	mse:  0.09562197060108109 , mae: 0.23147384239714727
+	P-value _MLP:  1.7343976283205784e-06
+AR+MLP
+Significant lags: 
+	[5, 6, 7, 8, 11, 16, 17, 22, 24, 30]
+	Hidden Neurons: 50
+	mse:  0.17889935369911544 , mae: 0.36276555755717205
+	P-value _arMLP:  1.7343976283205784e-06
+ARMA+MLP
+Significant lags: 
+	[2, 3, 5, 7, 10, 16, 17, 22, 27, 30]
+	Hidden Neurons: 50
+	mse:  0.11526235449589027 , mae: 0.2692243235513213
+	P-value _armaMLP:  1.7343976283205784e-06
+ESN:
+	Hidden Neurons: 50
+	mse:  0.08101179607838353 , mae: 0.19805369697107514
+	P-value _ESN:  1.7343976283205784e-06
+AR+ESN
+Significant lags: 
+	[5, 6, 7, 8, 11, 16, 17, 22, 24, 30]
+	Hidden Neurons: 80
+	mse:  0.0841585058266598 , mae: 0.20279051016638489
+	P-value _arESN:  1.7343976283205784e-06
+ARMA+ESN
+Significant lags: 
+	[2, 3, 5, 7, 10, 16, 17, 22, 27, 30]
+	Hidden Neurons: 60
+	mse:  0.0833993273836754 , mae: 0.2027587098816373
+	P-value _armaESN:  1.7343976283205784e-06
+RBF:
+	Hidden Neurons: 50
+	mse:  0.2749885854284754 , mae: 0.4286355064514662
+	P-value _RBF:  1.7343976283205784e-06
+AR+RBF
+Significant lags: 
+	[5, 6, 7, 8, 11, 16, 17, 22, 24, 30]
+	Hidden Neurons: 50
+	mse:  0.1773695642533508 , mae: 0.35885778458592754
+	P-value _arRBF:  1.7343976283205784e-06
+ARMA+RBF
+Significant lags: 
+	[2, 3, 5, 7, 10, 16, 17, 22, 27, 30]
+	Hidden Neurons: 50
+	mse:  0.23047864658018605 , mae: 0.4275597447150011
+	P-value _armaRBF:  1.7343976283205784e-06
+Ended:  22/02/2022 19:55:45
+
+MAE:
+
+mean
+
+all
+0.21264850506143523
+NN
+0.23037263222772503
+LM
+0.1979037841112619
+
+median
+
+all
+0.19730432098563996
+NN
+0.20853445414348712
+LM
+0.1979037841112619
+

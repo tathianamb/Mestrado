@@ -1,0 +1,4 @@
+Total:  44640
+Treinamento:  26784
+Validação:  8928
+Teste:  8928

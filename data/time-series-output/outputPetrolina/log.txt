@@ -1,94 +1,13 @@
-Started:  07/02/2022 15:49:38
+Started:  11/03/2022 08:51:51
 Significant lags: 
 	[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 AR:
 	(9, 0, 0)
 	mse:  0.5045595961182476 , mae: 0.5354535821102709
-ARMA:
-	(2, 0, 2)
-	mse:  0.4927776487162443 , mae: 0.5261384695248826
-ELM:
-	Hidden Neurons: 70
-	mse:  0.5078672323154562 , mae: 0.531079744895114
-	P-value _ELM:  1.7343976283205784e-06
 AR+ELM
 Significant lags: 
 	[3, 4, 5, 12, 15, 17, 21, 23, 27, 29]
 	Hidden Neurons: 70
-	mse:  1042.844585199547 , mae: 31.661458168672485
+	mse:  1.260914232193623 , mae: 0.974530471141506
 	P-value _arELM:  1.7343976283205784e-06
-ARMA+ELM
-Significant lags: 
-	[9, 17]
-	Hidden Neurons: 50
-	mse:  2.4195054789787824 , mae: 1.1837586787839423
-	P-value _armaELM:  1.7343976283205784e-06
-MLP:
-	Hidden Neurons: 50
-	mse:  0.6993485891117467 , mae: 0.6964891950089077
-	P-value _MLP:  1.7343976283205784e-06
-AR+MLP
-Significant lags: 
-	[3, 4, 5, 12, 15, 17, 21, 23, 27, 29]
-	Hidden Neurons: 130
-	mse:  1.3292782962504255 , mae: 1.006840666321197
-	P-value _arMLP:  1.7343976283205784e-06
-ARMA+MLP
-Significant lags: 
-	[9, 17]
-	Hidden Neurons: 140
-	mse:  1.6166302854575567 , mae: 1.126750184288521
-	P-value _armaMLP:  1.7343976283205784e-06
-ESN:
-	Hidden Neurons: 50
-	mse:  0.5008110904317947 , mae: 0.5286085810928448
-	P-value _ESN:  1.7343976283205784e-06
-AR+ESN
-Significant lags: 
-	[3, 4, 5, 12, 15, 17, 21, 23, 27, 29]
-	Hidden Neurons: 90
-	mse:  0.658440166477647 , mae: 0.6471616671399845
-	P-value _arESN:  1.7343976283205784e-06
-ARMA+ESN
-Significant lags: 
-	[9, 17]
-	Hidden Neurons: 50
-	mse:  0.657379042313107 , mae: 0.6362570221708549
-	P-value _armaESN:  1.7343976283205784e-06
-RBF:
-	Hidden Neurons: 50
-	mse:  1.213954164398921 , mae: 0.9415982512609659
-	P-value _RBF:  1.7343976283205784e-06
-AR+RBF
-Significant lags: 
-	[3, 4, 5, 12, 15, 17, 21, 23, 27, 29]
-	Hidden Neurons: 50
-	mse:  1.5169485615466962 , mae: 1.087436158111842
-	P-value _arRBF:  1.7343976283205784e-06
-ARMA+RBF
-Significant lags: 
-	[9, 17]
-	Hidden Neurons: 50
-	mse:  1.5457338629616142 , mae: 1.0973292090285331
-	P-value _armaRBF:  1.7343976283205784e-06
-Ended:  08/02/2022 23:52:11
-
-MAE:
-
-mean
-
-all
-0.5828686195567854
-NN
-0.6244283981194516
-LM
-0.5310502533216653
-
-median
-
-all
-0.5362585614063939
-NN
-0.59068542620109
-LM
-0.5310502533216653
+Ended:  11/03/2022 12:30:17
