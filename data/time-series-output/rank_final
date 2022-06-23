@@ -1,41 +1,41 @@
-\begin{sidewaystable}
-\sidewaystablefn%
-\begin{center}
-\begin{minipage}{\textheight}
-\caption{\textcolor{red}{Final}}
-\begin{tabular*}{\textheight}{@{\extracolsep{\fill}}c|lllllllllllll@{\extracolsep{\fill}}}
-\toprule
-\multicolumn{2}{c}{\multirow{2}{*}{Serie}}                                                                          & \multicolumn{2}{c}{Brasília} & \multicolumn{2}{c}{Florianópolis} & \multicolumn{2}{c}{Natal} & \multicolumn{2}{c}{Petrolina} & \multicolumn{2}{c}{São Luís} & \multicolumn{2}{c}{Total} \\
-\multicolumn{2}{c}{}                                                                                                & MSE           & MAE          & MSE             & MAE             & MSE         & MAE         & MSE           & MAE           & MSE           & MAE          & Mean        & Rank        \\ 
-\midrule
-\multicolumn{1}{c|}{\multirow{6}{*}{\rotatebox{90}{Single}}}    & AR                                                                 & 2             & 2            & 23              & 22              & 2           & 3           & 7             & 8             & 11            & 11           & 9.1         & 10          \\
-\multicolumn{1}{c|}{}                           & ARMA                                                               & 1             & 1            & 21              & 21              & 1           & 1           & 1             & 1             & 10            & 10           & 6.8         & 7           \\
-\multicolumn{1}{c|}{}                           & MLP                                                                & 19            & 21           & 16              & 18              & 18          & 18          & 17            & 17            & 19            & 19           & 18.2        & 19          \\
-\multicolumn{1}{c|}{}                           & RBF                                                                & 26            & 26           & 26              & 26              & 24          & 24          & 20            & 20            & 26            & 26           & 24.4        & 26          \\
-\multicolumn{1}{c|}{}                           & ELM                                                                & 10            & 9            & 8               & 3               & 13          & 11          & 9             & 5             & 5             & 4            & 7.7         & 8           \\
-\multicolumn{1}{c|}{}                           & ESN                                                                & 6             & 8            & 7               & 1               & 14          & 12          & 4             & 2             & 2             & 2            & 5.8         & 6           \\ \hline
-\multicolumn{1}{c|}{\multirow{8}{*}{\rotatebox{90}{Hybrid}}}    & AR+MLP                                                             & 24            & 24           & 22              & 23              & 17          & 19          & 22            & 22            & 23            & 23           & 21.9        & 23          \\
-\multicolumn{1}{c|}{}                           & AR+RBF                                                             & 23            & 23           & 17              & 15              & 25          & 25          & 23            & 23            & 22            & 22           & 21.8        & 22          \\
-\multicolumn{1}{c|}{}                           & AR+ELM                                                             & 17            & 15           & 25              & 25              & 23          & 22          & 21            & 21            & 17            & 16           & 20.2        & 21          \\
-\multicolumn{1}{c|}{}                           & AR+ESN                                                             & 13            & 12           & 13              & 11              & 19          & 17          & 16            & 16            & 15            & 14           & 14.6        & 14          \\
-\multicolumn{1}{c|}{}                           & ARMA+MLP                                                           & 22            & 22           & 24              & 24              & 21          & 23          & 25            & 25            & 25            & 25           & 23.6        & 25          \\
-\multicolumn{1}{c|}{}                           & ARMA+RBF                                                           & 25            & 25           & 15              & 12              & 26          & 26          & 24            & 24            & 24            & 24           & 22.5        & 24          \\
-\multicolumn{1}{c|}{}                           & ARMA+ELM                                                           & 15            & 14           & 20              & 17              & 22          & 20          & 26            & 26            & 18            & 17           & 19.5        & 20          \\
-\multicolumn{1}{c|}{}                           & ARMA+ESN                                                           & 12            & 11           & 14              & 13              & 20          & 21          & 15            & 15            & 13            & 13           & 14.7        & 15          \\ \hline 
-\multicolumn{1}{c|}{\multirow{12}{*}{\rotatebox{90}{Ensemble}}} & Median (LM)                                                        & 8             & 6            & 5               & 7               & 6           & 5           & 2             & 3             & 6             & 6            & 5.4         & 4           \\
-\multicolumn{1}{c|}{}                           & Median (ANN)                                                       & 14            & 16           & 10              & 14              & 11          & 9           & 12            & 12            & 12            & 15           & 12.5        & 12          \\
-\multicolumn{1}{c|}{}                           & \begin{tabular}[c]{@{}l@{}}Median (ANN \vspace{-1.5mm} \\ without RBF)\end{tabular} & 3             & 3            & 1               & 2               & 12          & 7           & 8             & 7             & 1             & 1            & 4.5         & 2           \\
-\multicolumn{1}{c|}{}                           & Median (SM)                                                        & 7             & 5            & 3               & 6               & 4           & 2           & 6             & 9             & 4             & 5            & 5.1         & 3           \\
-\multicolumn{1}{c|}{}                           & \begin{tabular}[c]{@{}l@{}}Median (SM \vspace{-1.5mm} \\ without RBF)\end{tabular}  & 4             & 4            & 2               & 5               & 5           & 4           & 5             & 6             & 3             & 3            & 4.1         & 1           \\
-\multicolumn{1}{c|}{}                           & Median (ALL)                                                       & 11            & 13           & 9               & 4               & 15          & 15          & 19            & 19            & 9             & 8            & 12.2        & 11          \\
-\multicolumn{1}{c|}{}                           & Mean (LM)                                                          & 8             & 6            & 5               & 7               & 6           & 5           & 2             & 3             & 6             & 6            & 5.4         & 4           \\
-\multicolumn{1}{c|}{}                           & Mean (ANN)                                                         & 20            & 19           & 18              & 19              & 9           & 13          & 13            & 13            & 20            & 20           & 16.4        & 17          \\
-\multicolumn{1}{c|}{}                           & \begin{tabular}[c]{@{}l@{}}Mean (ANN \vspace{-1.5mm} \\ without RBF)\end{tabular}   & 20            & 19           & 18              & 19              & 9           & 13          & 13            & 13            & 20            & 20           & 16.4        & 17          \\
-\multicolumn{1}{c|}{}                           & Mean (SM)                                                          & 16            & 17           & 12              & 16              & 3           & 10          & 11            & 11            & 16            & 18           & 13          & 13          \\
-\multicolumn{1}{c|}{}                           & \begin{tabular}[c]{@{}l@{}}Mean (SM \vspace{-1.5mm} \\ without RBF)\end{tabular}    & 5             & 10           & 4               & 10              & 8           & 8           & 10            & 10            & 8             & 9            & 8.2         & 9           \\
-\multicolumn{1}{c|}{}                           & Mean (ALL)                                                         & 18            & 18           & 11              & 9               & 16          & 16          & 18            & 18            & 14            & 12           & 15          & 16          \\ 
-\botrule
-\end{tabular*}
-\end{minipage}
-\end{center}
-\end{sidewaystable}
+\begin{landscape}
+\begin{table}
+\centering
+\tiny
+\captionsetup{width=24cm}
+\caption{Ranking de performance}
+\label{tab:ranking}
+\begin{tabular}{ll|cccc|cccc|cccc|cccc|cccc|cc}
+\hline
+\multicolumn{2}{c|}{\multirow{2}{*}{\textbf{Modelo}}} & \multicolumn{4}{c|}{\textbf{Brasília}} & \multicolumn{4}{c|}{\textbf{Florianópolis}} & \multicolumn{4}{c|}{\textbf{Natal}} & \multicolumn{4}{c|}{\textbf{Petrolina}} & \multicolumn{4}{c|}{\textbf{São Luís}} & \multicolumn{2}{c}{\textbf{Total}} \\ 
+\multicolumn{2}{l|}{}                        & \textbf{MSE} & \textbf{MAE} & \textbf{ARV}  & \textbf{IA} & \textbf{MSE} & \textbf{MAE} & \textbf{ARV}  & \textbf{IA} & \textbf{MSE} & \textbf{MAE} & \textbf{ARV}  & \textbf{IA} & \textbf{MSE} & \textbf{MAE} & \textbf{ARV}  & \textbf{IA} & \textbf{MSE} & \textbf{MAE} & \textbf{ARV}  & \textbf{IA} & \textbf{Mean} & \textbf{Rank}        \\ \hline
+\multirow{6}{*}{\rotatebox{90}{Únicos}}		& AR                     & 2   & 2  & 12 &11 	& 2  & 22  & 10	& 8  & 2  & 3   &8	&9	& 7  & 8   & 9	& 9  & 11 & 11  & 8	 & 9	& 8.15	& 9 \\
+                          					& ARMA                   & 1   & 1  & 7  &3 	& 21 & 21  & 5	& 3  & 1  & 1   &3	&2	& 1  & 1   & 8	& 6  & 10 & 10  & 5	 & 5	& 5.75	& 4 \\
+                          					& MLP                    & 19  & 21 & 20 &19 	& 16 & 18  & 22	& 20 & 18 & 18  &23	&23	& 17 & 17  & 19	& 17 & 19 & 19  & 19 & 19	& 19.15	& 20  \\
+                          					& RBF                    & 26  & 26 & 26 &26 	& 26 & 26  & 26	& 26 & 24 & 24  &26	&24	& 20 & 20  & 26	& 25 & 26 & 26  & 26 & 26	& 25.05	& 26  \\
+                          					& ELM                    & 10  & 9  & 5  &5 	& 8  & 3   & 4	& 2  & 13 & 11  &16	&14	& 9  & 5   & 1	& 1  & 5  & 4   & 1	 & 2	& 6.4	& 7 \\
+                          					& ESN                    & 6   & 8  & 2  &1 	& 7  & 1   & 1	& 1  & 14 & 12  &1	&1	& 4  & 2   & 3	& 2  & 2  & 2   & 2	 & 1	& 3.65	& 1 \\ \hline
+\multirow{8}{*}{\rotatebox{90}{Híbridos}}	& AR+MLP                 & 24  & 24 & 22 &24 	& 22 & 23  & 20	& 23 & 17 & 19  &18	&17	& 22 & 22  & 20	& 20 & 23 & 23  & 24 & 23	& 21.5	& 22  \\
+                          					& AR+RBF                 & 23  & 23 & 21 &23 	& 17 & 15  & 21	& 19 & 25 & 25  &24	&25	& 23 & 23  & 23	& 22 & 22 & 22  & 22 & 22	& 22	& 23  \\
+                          					& AR+ELM                 & 17  & 15 & 8  &15 	& 25 & 25  & 25	& 25 & 23 & 22  &21	&22	& 21 & 21  & 21	& 21 & 17 & 16  & 14 & 16	& 19.5	& 21  \\
+                          					& AR+ESN                 & 13  & 12 & 4  &9 	& 13 & 11  & 3	& 11 & 19 & 17  &14	&18	& 16 & 16  & 12	& 14 & 15 & 14  & 12 & 13	& 12.8	& 13  \\
+                          					& ARMA+MLP               & 22  & 22 & 18 &20 	& 24 & 24  & 18	& 24 & 21 & 23  &22	&21	& 25 & 25  & 24	& 24 & 25 & 25  & 25 & 25	& 22.85	& 25  \\
+                          					& ARMA+RBF               & 25  & 25 & 25 &25 	& 15 & 12  & 17	& 18 & 26 & 26  &25	&26	& 24 & 24  & 22	& 23 & 24 & 24  & 23 & 24	& 22.65	& 24  \\
+                          					& ARMA+ELM               & 15  & 14 & 3  &12 	& 20 & 17  & 11	& 16 & 22 & 20  &15	&20	& 26 & 26  & 25	& 26 & 18 & 17  & 15 & 17	& 17.75	& 19  \\
+                          					& ARMA+ESN               & 12  & 11 & 1  &2 	& 14 & 13  & 2	& 12 & 20 & 21  &20	&19	& 15 & 15  & 11	& 13 & 13 & 13  & 10 & 12	& 12.45	& 12  \\ \hline
+\multirow{12}{*}{\rotatebox{90}{Ensemble}}	& Mediana (ML)           & 8   & 6  & 9  &6 	& 5  & 7   & 8	& 6  & 6  & 5   &4	&7	& 2  & 3   & 6	& 7  & 6  & 6   & 6	 & 6	& 5.95	& 5 \\
+                          					& Mediana (RNAs)         & 14  & 16 & 17 &16 	& 10 & 14  & 16	& 15 & 11 & 9   &19	&12	& 12 & 12  & 13	& 11 & 12 & 15  & 17 & 15	& 13.8	& 14  \\
+                          					& Mediana (RNAs sem RBF) & 3   & 3  & 11 &3 	& 1  & 2   & 6	& 3  & 12 & 7   &17	&13	& 8  & 7   & 2	& 3  & 1  & 1   & 3	 & 3	& 5.45	& 3 \\
+                          					& Mediana (MU)           & 7   & 5  & 14 &13 	& 3  & 6   & 12	& 8  & 4  & 2   &9	&5	& 6  & 9   & 5	& 5  & 4  & 5   & 9	 & 6	& 6.85	& 8 \\
+                          					& Mediana (MU sem RBF)   & 4   & 4  & 12 &6 	& 2  & 5   & 7	& 3  & 5  & 4   &6	&5	& 5  & 6   & 4	& 4  & 3  & 3   & 4	 & 4	& 4.8	& 2 \\
+                          					& Mediana (todos)        & 11  & 13 & 6  &9 	& 9  & 4   & 14	& 13 & 15 & 15  &11	&15	& 19 & 19  & 18	& 19 & 9  & 8   & 11 & 10	& 12.4	& 11  \\
+                          					& Média (ML)             & 8   & 6  & 9  &6 	& 5  & 7   & 8	& 6  & 6  & 5   &4	&7	& 2  & 3   & 6	& 7  & 6  & 6   & 6	 & 6	& 5.95	& 5 \\
+                          					& Média (RNAs)           & 20  & 19 & 23 &21 	& 18 & 19  & 23	& 21 & 9  & 13  &12	&10	& 13 & 13  & 15	& 15 & 20 & 20  & 20 & 20	& 17.2	& 17  \\
+                          					& Média (RNAs sem RBF)   & 20  & 19 & 23 &21 	& 18 & 19  & 23	& 21 & 9  & 13  &12	&10	& 13 & 13  & 15	& 15 & 20 & 20  & 20 & 20	& 17.2	& 17  \\
+                          					& Média (MU)             & 16  & 17 & 19 &18 	& 12 & 16  & 19	& 17 & 3  & 10  &7	&4	& 11 & 11  & 14	& 12 & 16 & 18  & 18 & 18	& 13.8	& 14  \\
+                          					& Média (MU sem RBF)     & 5   & 10 & 15 &14 	& 4  & 10  & 13	& 10 & 8  & 8   &2	&3	& 10 & 10  & 10	& 10 & 8  & 9   & 13 & 11	& 9.15	& 10  \\
+                          					& Média (todos)          & 18  & 18 & 16 &17 	& 11 & 9   & 15	& 14 & 16 & 16  &10	&16	& 18 & 18  & 17	& 18 & 14 & 12  & 16 & 14	& 15.15	& 16 \\ \hline
+\end{tabular}
+\caption*{Fonte: Autoria própria}
+\end{table}
+\end{landscape}
